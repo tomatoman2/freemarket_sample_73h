@@ -39,7 +39,6 @@
 - belongs_to :user
 - belongs_to :brand
 - belongs_to :category
-- belongs_to :prefecture
 - belongs_to :code
 
 ## product_images
@@ -63,7 +62,6 @@
 |user_id|references|null: false, foreign_key: true|
 #Association        
 - belongs_to:user
-- belongs_to:prefecture
 
 
 ## credit_cardsテーブル
@@ -119,14 +117,6 @@
 ### Association
 - belongs_to :product
 
-## prefectures テーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false, unique: true|
-
-### Association
-- has_many :address
-- has_many :products
 
 
 

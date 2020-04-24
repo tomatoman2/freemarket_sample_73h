@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   validates :name, presence: true
+  validates :category_id, presence: true
   validates :price, presence: true
   validates :postage_code, presence: true
   validates :explanation, presence: true

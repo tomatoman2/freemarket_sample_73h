@@ -1,0 +1,144 @@
+%nav.menu
+  %ul
+    %li
+      = link_to "FURIMA", root_path
+    %li
+      = icon('fa','angle-right')
+    %li
+      = link_to "ベビー・キッズ", '#'
+    %li
+      = icon('fa','angle-right')
+    %li
+      = link_to "おもちゃ", '#'
+    %li
+      = icon('fa','angle-right')
+    %li
+      = link_to "その他", '#'
+.main
+  .main__sub
+    .content
+      .content__form
+        .content__form__name
+          product
+        .content__form__body
+          %ul
+            %li
+              = image_tag src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png", class: 'photo'
+              %ul.gallery
+                %li
+                  = image_tag src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png", class: 'gallery'
+                %li
+                  = image_tag src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/8/a002.png", class: 'gallery'
+                %li
+                  = image_tag src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/9/a003.png", class: 'gallery'
+        .content__form__price
+          .price
+            ¥10000
+          .tax
+            (税込) 送料込み
+        .content__form__text
+          親譲りの無鉄砲で小供の時から損ばかりしている。 小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。 なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。 弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
+        .content__form__table
+          %table
+            %tr
+              %th 出品者
+              %td hoge
+            %tr
+              %th カテゴリー
+              %td
+                = link_to 'ベビー・キッズ', '#'
+                %br
+                = link_to 'おもちゃ', '#'
+                %br
+                = link_to 'その他'
+            %tr
+              %th ブランド
+              %td
+            %tr
+              %th 商品のサイズ
+              %td
+            %tr
+              %th 商品の状態
+              %td 新品/未使用
+            %tr
+              %th 配送料の負担
+              %td 着払い（購入者負担）
+            %tr
+              %th 発送元の地域
+              %td
+                = link_to '東京都', '#'
+            %tr
+              %th 発送日の目安
+              %td 1-2日で発送
+        .content__form__option
+          .option
+            .like
+              = icon('fa', 'star', class: 'like__icon')
+              お気に入り0
+          .option
+            .report
+              = icon('fa', 'flag', class: 'report__icon')
+              不適切な商品の通報
+      .content__comment
+        = form_for '#' do |f|
+          = f.text_area :comment, class: 'textarea'
+        .content__comment__note
+          相手のことを考え丁寧なコメントを心がけましょう。
+          %br
+          不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        .content__comment__btn
+          = icon('fa', 'comment')
+          コメントする
+      .link
+        .link__left
+          = link_to icon('fa', 'angle-left', "前の商品"), '#', class: 'left__icon'
+        .link__right 
+          = link_to '#' do
+            後の商品
+            = icon('fa', 'angle-right', class: 'right__icon')
+      .relate
+        = link_to "キッズをもっと見る", '#'
+%aside.download
+  .inner
+    %h2.inner__title だれでもかんたん、人生を変えるフリマアプリ
+    %p.inner__text  今すぐ無料ダウンロード！
+    .inner__icon
+      = link_to image_tag(src="http://furima.tokyo/assets/app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg", class: 'icon'), '#'
+      = link_to image_tag(src="http://furima.tokyo/assets/google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg",class: 'icon'), '#'
+.footer
+  %ul.contents
+    %li.content
+      %h2.content__head FURIMAついて
+      %ul
+        %li
+          = link_to '会社概要（運営会社）', '#'
+        %li
+          = link_to 'プライバシーポリシー', '#'
+        %li
+          = link_to 'FURIMA利用規約', '#'
+        %li
+          = link_to 'ポイントに関する規約', '#'
+    %li.content
+      %h2.content__head FURIMAを見る
+      %ul
+        %li
+          = link_to 'カテゴリー一覧', '#'
+        %li
+          = link_to 'ブランド一覧', '#'
+    %li.content
+      %h2.content__head ヘルプ＆ガイド
+      %ul
+        %li
+          = link_to 'FURIMAガイド', '#'
+        %li
+          = link_to 'FURIMAロゴ利用ガイドライン', '#'
+        %li
+          = link_to 'お知らせ', '#'
+  .footer__logo
+    = link_to image_tag('logo-white.png', class: 'icon'), root_path
+  %p ©︎FURIMA
+
+.btn
+  %span.btn__text
+    出品する
+    = link_to image_tag('icon_camera.png', size: '50'), '#', class: 'btn__camera'

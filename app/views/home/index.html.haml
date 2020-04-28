@@ -1,0 +1,214 @@
+!!!
+%html(lang="ja")
+  %head
+    %meta(charset="UTF-8")/
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")/
+    %title Document
+  %body
+    -# %header.header 
+    -#   %div.header__inner
+    .main
+      %section.main__visual
+        .main__visual__content
+          %h2.main__visual__content__title
+            %br
+              フリマアプリ
+          %p.main__visual__content__text
+            FURIMAは誰でも簡単に出品、購入できる
+            %br
+            フリマアプリです
+          .main__visual__content__btn
+            = link_to image_tag('app2.svg',size: '180x53'), "#", class: 'appBtn'
+            = link_to image_tag('google.svg',size: '180x53'), "#", class: 'gooBtn'
+        .main__visual__picture
+      %section.main__introduction
+        %h2.main__introduction__subtitle
+          FURIMAが選ばれる3つの理由
+        %ul.main__introduction__lists
+          %li.list
+            .list__number
+              %span.number 1
+              %img(src="/assets/pict-01.jpg") 
+            %h3.list__text
+              %span 3分
+              ですぐに出品
+            %p.list__dexplanation
+              スマホで入力するだけで簡単に出品できる！
+          %li.list
+            .list__number 
+              %span.number 2
+              %img(src="/assets/pict-02.jpg") 
+            %h3.list__text
+              %span シンプル
+              
+              で使いやすい
+
+            %p.list__dexplanation
+              めんどくさい入力は必要なく、検索もスムーズ！
+          %li.list.list__last
+            .list__number
+              %span.number 3
+              %img(src="/assets/pict-03.jpg") 
+            %h3.list__text
+              手数料
+              %span 業界最安
+            %p.list__dexplanation
+              最大3%でお得に出品&購入！
+      %section.main__middleVisual
+        .main__middleVisual__inner
+          %h2.main__middleVisual__inner__subtitle
+            会員数日本一位
+          %p.main__middleVisual__inner__text
+            FURIMAは、フリマアプリで最も人気。
+            %br
+              出品、購入回数も業界最多です。
+            %nobr
+              欲しかったあの商品も見つかるかもしれません。
+          .main__middleVisual__inner__btn
+            = link_to image_tag('app2.svg',size: '180x53'), "#", class: 'appBtn'
+            = link_to image_tag('google.svg',size: '180x53'), "#", class: 'gooBtn'
+      %section.main__middleIntroduction
+        %h2.main__middleIntroduction__header
+          FURIMAの特徴
+        .main__middleIntroduction__items
+          %section.main__middleIntroduction__items__list
+            %figure.main__middleIntroduction__items__list__img
+              %img(src="/assets/icon-1.png") 
+            %h3.main__middleIntroduction__items__list__title
+              簡単に売り買いできる
+            %p.main__middleIntroduction__items__list__detail
+              スマホ一つで、いつでもどこでも簡単に出品・購入が可能！     
+          %section.main__middleIntroduction__items__list
+            %figure.main__middleIntroduction__items__list__img
+              %img(src="/assets/icon-3.png") 
+            %h3.main__middleIntroduction__items__list__title
+              売上金は即日振り込みに対応
+            %p.main__middleIntroduction__items__list__detail
+              午前9時までに振り込みを依頼いただければ、翌日に指定の口座に入金いたします！
+
+          %section.main__middleIntroduction__items__list
+            %figure.main__middleIntroduction__items__list__img
+              %img(src="/assets/icon-2.png") 
+            %h3.main__middleIntroduction__items__list__title
+              様々な支払いに対応
+            %p.main__middleIntroduction__items__list__detail
+              お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります
+
+      %section.main__pickupContent
+        %h2.main__pickupContent__category
+          ピックアプカテゴリー
+        .main__pickupContent__box
+          .main__pickupContent__box__head
+            = link_to '#', class: 'title' do
+              .h3 
+                新規投稿商品
+            -# = link_to '新規投稿商品', '#', class: 'title'
+          .main__pickupContent__box__lists
+            .main__pickupContent__box__lists__item
+              = link_to "#" , class: 'a' do
+                %figure.items__img
+                  %img(src="/assets/tabemono.jpg") 
+                .items__body
+                  %h3.items__body__name
+                    商品
+                  %div.items__body__details
+                    %ul
+                      %li 30000円                       
+                      %li
+                        %i
+                          = icon('fa','star',class: 'icon')
+                          0  
+                    %p (税込)   
+
+            .main__pickupContent__box__lists__item
+              = link_to "#" , class: 'a' do
+                %figure.items__img
+                  %img(src="/assets/tabemono.jpg") 
+                .items__body
+                  %h3.items__body__name
+                    商品
+                  %div.items__body__details
+                    %ul
+                      %li 30000円                       
+                      %li
+                        %i
+                          = icon('fa','star',class: 'icon')
+                          0  
+                    %p (税込)    
+  
+            .main__pickupContent__box__lists__item
+              = link_to "#" , class: 'a' do
+                %figure.items__img
+                  %img(src="/assets/tabemono.jpg") 
+                .items__body
+                  %h3.items__body__name
+                    商品
+                  .items__body__details
+                    %ul
+                      %li 30000円                       
+                      %li
+                      = icon('fa','star',class: 'icon')
+                      0  
+                    %p (税込)            
+
+      %section.main__pickupContent
+        %h2.main__pickupContent__category
+          ピックアップブランド
+        .main__pickupContent__box
+          .main__pickupContent__box__head
+            = link_to 'アーカイバ', '#', class: 'title'
+          .main__pickupContent__box__lists
+            .main__pickupContent__box__lists__item
+              = link_to "#" , class: 'a' do
+                %figure.items__img
+                  %img(src="/assets/tabemono.jpg") 
+                .items__body
+                  %h3.items__body__name
+                    商品
+                  .items__body__details
+                    %ul
+                      %li 30000円                       
+                      %li
+                        %i
+                          = icon('fa','star',class: 'icon')
+                          0  
+                    %p (税込) 
+
+            .main__pickupContent__box__lists__item
+              = link_to "#" , class: 'a' do
+                %figure.items__img
+                  %img(src="/assets/tabemono.jpg") 
+                .items__body
+                  %h3.items__body__name
+                    商品
+                  .items__body__details
+                    %ul
+                      %li 30000円                       
+                      %li
+                        %i
+                          = icon('fa','star',class: 'icon')
+                          0  
+                    %p (税込) 
+
+            .main__pickupContent__box__lists__item
+              = link_to "#" , class: 'a' do
+                %figure.items__img
+                  %img(src="/assets/tabemono.jpg") 
+                .items__body
+                  %h3.items__body__name
+                    商品
+                  .items__body__details
+                    %ul
+                      %li 30000円                       
+                      %li
+                        %i
+                          = icon('fa','star',class: 'icon')
+                          0  
+                    %p (税込) 
+
+= render 'layouts/footer'
+
+      
+
+
+

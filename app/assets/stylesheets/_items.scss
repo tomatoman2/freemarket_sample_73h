@@ -1,0 +1,115 @@
+@mixin default_item_margin() {
+  margin-top:32px;
+}
+@mixin align_item_center() {
+  display:flex;
+  align-items:center;
+}
+
+.new-items{
+  margin-bottom:50px;
+  .input-form{
+    max-width:700px;
+    width:100%;
+    background-color:white;
+    margin:0 auto;
+    padding:30px 0;
+    hr{
+      width: 100%;
+      border:solid 1px #efefef;
+      margin:0;
+    }
+    .item-images{
+      padding:40px;
+      &__input{
+        input[type="file"]{
+          display:none;
+        }
+        .file-area{
+          height:148px;
+          width:100%;
+          background-color:#eee;
+          cursor: pointer;
+          line-height: 100%;
+          @include align_item_center();
+          text-align:center;
+          &__message{
+            width:100%;
+            margin:0 auto;
+            font-size:12px;
+          }
+        }
+      }
+    }
+    .item-info{
+      padding:40px;
+      &__item-explanation{
+        @include default_item_margin();
+      }
+    }
+    .item-details{
+      padding:40px;
+      &__item-brand{
+        @include default_item_margin();
+      }
+      &__item-size{
+        @include default_item_margin();
+      }
+      &__item-status{
+        @include default_item_margin();
+      }
+    }
+    .delivery-info{
+      padding:40px;
+      &__prefecture{
+        @include default_item_margin();
+      }
+      &__delivery_time{
+        @include default_item_margin();
+      }
+    }
+    .item-price{
+      padding:40px;
+      &__price{
+        display:flex;
+        justify-content:space-between;
+
+        .label{
+          margin:0;
+          @include align_item_center();
+        }
+        .input{
+          @include align_item_center();
+          input{
+            margin-left:5px;
+          }
+        }
+      }
+    }
+    .actions{
+      padding-top:40px;
+      text-align:center;
+      width: 360px;
+      margin: 0 auto 32px;
+      &__submit-button{
+        width:100%;
+        background-color: #3CCACE;;
+        color: #fff;
+        font-size: 17px;
+        font-weight:bold;
+        min-height: 48px;
+        padding: 0 24px;
+        border-radius: 4px;
+      }
+      .back{
+        display:inline-block;
+        text-decoration:none;
+        @include default_item_margin();
+      }
+    }
+    .note{
+      font-size:12px;
+      padding:36px;
+    }
+  }
+}

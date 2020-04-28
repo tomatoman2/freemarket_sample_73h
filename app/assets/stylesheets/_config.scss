@@ -1,0 +1,93 @@
+*{
+  box-sizing: border-box;
+}
+body{
+  background-color:#eee;
+  font-size:14px;
+  color:black;
+  margin:0;
+}
+//必須マークのcss
+.required{
+  background-color:red;
+  color:white;
+  margin-left:8px;
+  font-size:12px;
+  font-weight:bold;
+  line-height:1.4em;
+  padding:0 4px;
+  display: inline-block;
+  border-radius:2px;
+}
+//任意マークのcss
+.any{
+  background-color:grey;
+  color:white;
+  margin-left:8px;
+  font-size:12px;
+  font-weight:bold;
+  line-height:1.4em;
+  padding:0 4px;
+  display: inline-block;
+  border-radius:2px;
+}
+
+//入力項目のタイトル部分
+.label{
+  font-weight:bold;
+  margin-bottom:16px;
+}
+//入力項目（一行テキスト）
+input[type="text"],input[type="number"]{
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  height: 48px;
+  outline: none;
+  padding: 0 16px;
+  width: 100%; 
+}
+input[type="number"]{
+  text-align:right;
+}
+
+//選択式の入力項目の大枠
+.input-select{
+  position:relative;
+  //選択式の入力項目
+  select{
+    -webkit-appearance: none;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #222;
+    font-size: 16px;
+    height: 48px;
+    line-height: 1;
+    outline: none;
+    padding: 0 56px 0 16px;
+    width: 100%;
+  }
+  //選択の右側にある下向きの矢印
+  svg{
+    bottom: 0;
+    margin: auto;
+    pointer-events: none;
+    position: absolute;
+    right: 16px;
+    top: 0;
+    width: 24;
+  }
+}
+
+//テキストエリア（複数行入力）のcss
+textarea{
+  width:100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+  padding: 13px 16px;
+  resize: vertical;
+}

@@ -3,10 +3,31 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+def configure_sign_up_params
+  devise_parameter_sanitizer.permit(:sign_up,
+    keys: [:nickname, :password, :name,:kana_name,:birthday,address_attributes: [:postal_code, :prefecture_id, :city, :street, :building_name, :telehone_number, :user_id]])
+end
 
-  # GET /resource/sign_up
+# def address
+#   @user = User.new
+#   @user.build_address
+# end
+
+# def create
+#   super
+#   user = User.new(configure_sign_up_params)
+#   user.save
+# end
+
+def new
+  @user = User.new
+  @user.addresses.build
+  @prefectures = Prefecture.all
+  super
+end
+  # # GET /resource/sign_up
   # def new
-  #   super
+  #   @prefectures = Prefecture.all
   # end
 
   # POST /resource

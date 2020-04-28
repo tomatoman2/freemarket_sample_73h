@@ -16,9 +16,11 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.datetime :remember_created_at
 
       t.string :nickname,null: false
-      t.string :name,null: false
-      t.string :kana_name,null: false
-      t.datetime :birthday,null: false
+      t.string :family_name,null: false
+      t.string :first_name,null: false
+      t.string :kana_family_name,null: false
+      t.string :kana_first_name,null: false
+      t.date :birthday,null: false
 
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false

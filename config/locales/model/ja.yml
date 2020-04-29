@@ -1,0 +1,23 @@
+
+---
+ja:
+  activerecord:
+    models:
+      product: 商品
+    attributes:
+      product:
+        id: ID
+        created_at: 登録日時
+        updated_at: 更新日時
+        name: 商品名
+        explanation: 商品の説明
+        category_id: カテゴリー
+        brand_id: ブランド
+        brand_name: ブランド名
+        price: 販売価格
+        postage_code: 配送料の負担
+        status: 商品の状態
+        user_id: ユーザーID
+        prefecture_id: 発送元の地域
+        delivery_time: 発送までの日数
+        size: サイズ

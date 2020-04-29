@@ -38,7 +38,8 @@ body{
   margin-bottom:16px;
 }
 //入力項目（一行テキスト）
-input[type="text"]{
+
+input[type="text"],input[type="number"]{
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
@@ -47,6 +48,11 @@ input[type="text"]{
   padding: 0 16px;
   width: 100%; 
 }
+
+input[type="number"]{
+  text-align:right;
+}
+
 //選択式の入力項目の大枠
 .input-select{
   position:relative;

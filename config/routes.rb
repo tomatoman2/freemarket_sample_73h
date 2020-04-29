@@ -3,7 +3,10 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
-  root 'items#index'
+  root 'home#index'
   resources :items
 
+
 end
+
+

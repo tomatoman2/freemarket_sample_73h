@@ -1,0 +1,270 @@
+body{
+  background-color: #eee;
+}
+
+.mypage_top{
+  width: 700px;
+  margin: auto;
+  padding: 16px;
+  display: flex;
+
+  &__navi{
+    list-style: none;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    
+    .hurima{
+      text-decoration: none;
+      color: black;
+    }
+    
+  }
+  &__name{
+    list-style: none;
+  }
+  .top_user{
+    list-style: none;
+    text-decoration: none;
+    color: black;
+  }
+}
+.mypage_all{
+  width: 1030px;
+
+  .mypage_main{
+    width: 700px;
+    margin: 24px auto 0;
+    float: right;
+    
+    
+    
+    &__content{
+      float: none;
+      margin: auto;
+      background-image:url("/assets/sougen.jpg");
+
+      
+    
+        &__case{
+          height: 200px;
+          position: relative;
+          
+          .image_user{
+            overflow: hidden;
+            border-radius: 50%;
+            position: absolute;
+            left: 320px;
+            top: 50px;
+            margin: auto;
+          }
+          .content_name{
+            margin: auto;
+            font-size: 14px;
+            position: absolute;
+            top: 110px;
+            left: 320px;
+            line-height: 1.4;
+            color: black;
+
+          }
+          .content_under{
+            display: flex;
+            position: absolute;
+            top: 140px;
+            left: 300px;
+            .under_test{          
+              font-size: 14px;  
+              color: black;         
+            }
+            .under_put{
+              margin: 0 0 0 16px;
+              font-size: 14px;
+              color: black;
+            }
+          }
+        }
+    }
+    .mypage_main__info{
+      background-color: #ffffff;
+    
+
+      .mypage_alart{
+        border: 0;
+        background-color: #eeeeee;
+        display: flex;
+        padding: 0em;
+        margin: 0;
+
+        
+        &__news{
+          width: 50%;
+          border-top: 2px solid red;
+          list-style: none;
+          text-align: center;
+          font-size: 16px;
+          height: 74px;
+          line-height: 74px;
+          padding: 0em;
+          background-color: #ffffff;
+          color: black;
+          border-top: solid 1px skyblue;
+          
+          
+          
+          .osirase{
+            text-decoration: none;
+            color: black;
+            
+          }
+
+        }
+        &__list{
+          list-style: none;
+          text-align: center;
+          font-size: 16px;
+          width: 50%;
+          height: 74px;
+          line-height: 74px;
+          color: black;
+          
+          
+          .yarukoto{
+            text-decoration: none;
+            color: black;
+            
+          } 
+        }
+      }
+      .mypage_tab{
+      
+      &__link{
+        list-style: none;
+        
+        padding: 0em;
+        .link_a{
+          text-decoration: none;
+        }
+          .info_list{
+            padding: 16px;
+            min-height: 80px;
+            position: relative;
+            border: solid 1px skyblue;
+            .logo_a{
+            }
+
+            &__text{
+              position: absolute;
+              left: 100px;
+              top: 20px;
+              font-size: 18px;
+              overflow: hidden; 
+              color: black;         
+            }
+            .info_time{
+            font-size: 14px;
+            color: black;          
+            }         
+          }
+      }
+      }
+      .info_all_news{
+        height: 56px;
+        width: 700px;
+        text-align: center;
+        line-height: 56px;
+        background-color: #eeeeee;
+        padding-right: 16px;
+        margin-top: 20px;
+        color: black;
+        
+      }
+      .mypage_kounyuu{
+        height: 72px;
+        line-height: 72px;
+        background-color: #fafafa;
+        padding: 0 4%;
+      }
+      .mypage_container{
+        &__buy_out{
+          display: flex;
+          list-style: none;
+          padding: 0em;
+          height: 72px;
+          margin: 0em;
+          
+          .buy_now{
+            width: 50%;
+            text-align: center;
+            font-size: 16px;
+            border-top: 2px solid red;
+            line-height: 72px;
+            border-top: solid 1px skyblue;
+            
+            .mypage_buying{
+              text-decoration: none;
+              color: black;
+            }
+          }
+          
+          .buy_past{
+            width: 50%;
+            text-align: center;
+            font-size: 16px;
+            background-color: #eeeeee;
+            .mypage_bought{
+              text-decoration: none;
+              line-height: 74px;
+              color: black;
+              
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .mypage_side{
+    width: 240px;
+    float: left;
+    margin: 10px 20px 0 20px;   
+
+    &__menu{
+
+      &__list{
+        list-style: none;
+        padding: 10px;
+        background-color: #ffffff;
+        width: 240px;
+        height: 48px;
+        border-top: solid 1px skyblue;
+        font-size: 18px;       
+        font-weight: 600;
+
+        .menu_link{
+          text-decoration: none;
+          color: black;
+        }
+        
+      }
+      &__prf{
+        list-style: none;
+        padding: 10px;
+        background-color: #ffffff;
+        width: 240px;
+        height: 48px;
+        font-size: 18px;
+        border-top: solid 1px skyblue;
+        
+        .setting_link{
+          text-decoration: none;
+          color: black;
+        }
+        
+      }
+    }
+  }
+}
+.abc:hover{
+  background-color: #eeeeee;
+}

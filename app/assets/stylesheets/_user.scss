@@ -1,0 +1,69 @@
+  .account__main{
+    width: 700px;
+    margin: auto;
+    padding: 50px 135px;
+    background-color: #fff;
+    border: solid #ddd;
+    border-radius: 5px;
+
+    .account__heder{
+      font-size: 30px;
+      text-align: center;
+    }
+
+    .field{
+      margin-bottom: 10px;
+
+      .name-box{
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .input-select{
+        display: flex;
+        justify-content: space-between;
+
+      }
+
+      &__any{
+        background-color:grey;
+        color:white;
+        margin-left:8px;
+        font-size:12px;
+        font-weight:bold;
+        line-height:1.4em;
+        padding:0 4px;
+        display: inline-block;
+        border-radius:2px;
+      }
+
+      &__input{
+        input{
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          font-size: 16px;
+          height: 48px;
+          outline: none;
+          padding: 0 16px;
+          width: 100%; 
+        }
+      }
+
+    }
+    .field__actions{
+      text-align: center;
+    }
+  
+  }
+  input[type='submit'] {
+    background-color: #3CCACE;
+    color:white;
+    display: inline-block;
+    height: 50px;
+    font-size: 30px;
+    margin-top: 20px;
+    cursor: pointer;
+
+  }
+
+

@@ -28,7 +28,7 @@
           %li.list
             .list__number
               %span.number 1
-              %img(src="/assets/pict-01.jpg") 
+              = image_tag('pict-01')
             %h3.list__text
               %span 3分
               ですぐに出品
@@ -37,7 +37,7 @@
           %li.list
             .list__number 
               %span.number 2
-              %img(src="/assets/pict-02.jpg") 
+              = image_tag('pict-02') 
             %h3.list__text
               %span シンプル
               
@@ -48,7 +48,7 @@
           %li.list.list__last
             .list__number
               %span.number 3
-              %img(src="/assets/pict-03.jpg") 
+              = image_tag('pict-03') 
             %h3.list__text
               手数料
               %span 業界最安
@@ -73,14 +73,14 @@
         .main__middleIntroduction__items
           %section.main__middleIntroduction__items__list
             %figure.main__middleIntroduction__items__list__img
-              %img(src="/assets/icon-1.png") 
+              = image_tag('icon-1.png')
             %h3.main__middleIntroduction__items__list__title
               簡単に売り買いできる
             %p.main__middleIntroduction__items__list__detail
               スマホ一つで、いつでもどこでも簡単に出品・購入が可能！     
           %section.main__middleIntroduction__items__list
             %figure.main__middleIntroduction__items__list__img
-              %img(src="/assets/icon-3.png") 
+              = image_tag('icon-3.png')
             %h3.main__middleIntroduction__items__list__title
               売上金は即日振り込みに対応
             %p.main__middleIntroduction__items__list__detail
@@ -88,7 +88,7 @@
 
           %section.main__middleIntroduction__items__list
             %figure.main__middleIntroduction__items__list__img
-              %img(src="/assets/icon-2.png") 
+              = image_tag('icon-2.png')
             %h3.main__middleIntroduction__items__list__title
               様々な支払いに対応
             %p.main__middleIntroduction__items__list__detail
@@ -102,12 +102,11 @@
             = link_to '#', class: 'title' do
               .h3 
                 新規投稿商品
-            -# = link_to '新規投稿商品', '#', class: 'title'
           .main__pickupContent__box__lists
             .main__pickupContent__box__lists__item
               = link_to "#" , class: 'a' do
                 %figure.items__img
-                  %img(src="/assets/tabemono.jpg") 
+                  = image_tag('tabemono.jpg')
                 .items__body
                   %h3.items__body__name
                     商品
@@ -123,7 +122,7 @@
             .main__pickupContent__box__lists__item
               = link_to "#" , class: 'a' do
                 %figure.items__img
-                  %img(src="/assets/tabemono.jpg") 
+                  = image_tag('tabemono.jpg')
                 .items__body
                   %h3.items__body__name
                     商品
@@ -139,7 +138,7 @@
             .main__pickupContent__box__lists__item
               = link_to "#" , class: 'a' do
                 %figure.items__img
-                  %img(src="/assets/tabemono.jpg") 
+                  = image_tag('tabemono.jpg')
                 .items__body
                   %h3.items__body__name
                     商品
@@ -161,7 +160,7 @@
             .main__pickupContent__box__lists__item
               = link_to "#" , class: 'a' do
                 %figure.items__img
-                  %img(src="/assets/tabemono.jpg") 
+                  = image_tag('tabemono.jpg')
                 .items__body
                   %h3.items__body__name
                     商品
@@ -177,7 +176,7 @@
             .main__pickupContent__box__lists__item
               = link_to "#" , class: 'a' do
                 %figure.items__img
-                  %img(src="/assets/tabemono.jpg") 
+                  = image_tag('tabemono.jpg')
                 .items__body
                   %h3.items__body__name
                     商品
@@ -193,7 +192,7 @@
             .main__pickupContent__box__lists__item
               = link_to "#" , class: 'a' do
                 %figure.items__img
-                  %img(src="/assets/tabemono.jpg") 
+                  = image_tag('tabemono.jpg')
                 .items__body
                   %h3.items__body__name
                     商品

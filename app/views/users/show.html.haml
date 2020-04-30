@@ -1,0 +1,84 @@
+%ul.mypage_top
+  %li.mypage_top__navi
+    = link_to 'フリマ', '#', class: 'hurima'
+    = icon("fa", "angle-right")
+  %li.mypage_top__name
+    = link_to '桑折泰斗', '#', class: 'top_user'
+
+.mypage_all
+  .mypage_main
+    .mypage_main__content
+      = link_to '#', class: 'content_user' do
+        .mypage_main__content__case.abc
+          = image_tag "member_photo_noimage_thumb.png", size: "60x60", class: 'image_user'
+          .content_name
+            桑折泰斗
+          .content_under
+            .under_test
+              評価 ０
+            .under_put
+              出品数 ０
+    .mypage_main__info
+      %ul.mypage_alart
+        %li.mypage_alart__news.abc
+          = link_to 'お知らせ', '#', class: 'osirase' 
+        
+        %li.mypage_alart__list.abc
+          = link_to 'やることリスト', '#' ,class: 'yarukoto'
+
+      .mypage_tab
+        %ul.mypage_tab__link
+
+          = link_to '#', class: 'link_a' do
+            %li.info_list.abc
+              = image_tag "logo.png", size: "78x48", class: 'logo_a'
+              .info_list__text
+                今日はフリマアプリを制作しています。
+              .info_time
+                12時55分
+
+          = link_to '#', class: 'link_a' do
+            %li.info_list.abc
+              = image_tag "logo.png", size: "78x48", class: 'logo_a'
+              .info_list__text
+                今日もフリマアプリを制作しました。
+              .info_time
+                12時50分
+
+          = link_to '#', class: 'link_a' do
+            %li.info_list.abc
+              = image_tag "logo.png", size: "78x48", class: 'logo_a'
+              .info_list__text
+                今日でなんとかアプリ制作を終了したいです。なかなか制作に苦戦していて大変です
+              .info_time
+                12時55分
+          
+            %li.info_all_news.abc
+              一覧を見る
+      .mypage_kounyuu.abc
+        購入した商品
+      .mypage_container
+        %ul.mypage_container__buy_out
+          %li.buy_now.abc
+            = link_to '取引中', '#', class: 'mypage_buying' 
+          %li.buy_past.abc
+            = link_to '過去の取引', '#', class: 'mypage_bought' 
+
+  .mypage_side
+    %ul.mypage_side__menu   
+      %li.mypage_side__menu__list.abc
+        = link_to 'マイページ', '#', class: 'menu_link' 
+      %li.mypage_side__menu__prf.abc
+        = link_to 'プロフィール', '#', class: 'setting_link' 
+      %li.mypage_side__menu__list.abc
+        = link_to '設定', '#', class: 'menu_link' 
+      %li.mypage_side__menu__prf.abc
+        = link_to 'クレジットカードの登録', '#', class: 'setting_link' 
+      %li.mypage_side__menu__prf.abc
+        = link_to '住所の登録', '#', class: 'setting_link' 
+      %li.mypage_side__menu__prf.abc
+        = link_to '本人情報の確認', '#', class: 'setting_link' 
+      %li.mypage_side__menu__prf.abc
+        = link_to '電話番号の確認', '#', class: 'setting_link' 
+      %li.mypage_side__menu__list.abc
+        = link_to 'ログアウト', '#', class: 'menu_link'

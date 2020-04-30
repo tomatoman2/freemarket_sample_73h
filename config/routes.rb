@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   }
   root 'home#index'
   resources :items
-  resource  :users
+  resources  :users
 end
 
 

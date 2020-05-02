@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
-
-  root 'items#index'
+  root 'home#index'
   resources :items
-
+  resources  :users
 end
+
+

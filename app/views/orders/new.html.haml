@@ -1,0 +1,86 @@
+
+.container
+  .container__header
+    = link_to image_tag("logo.png",size:"120x33")
+  .container__main
+    .container__main__top
+      購入内容の確認
+    .container__main__item
+      .item__image
+        = image_tag('pict-01.jpg',size:"80x80")
+      .item__content
+        .item__content__text
+          ブラウス
+        .item__content__price
+          .item__money
+            10000
+          .item__tax
+            (税込み) 送料込み
+    .container__main__payment
+      .payment__price
+        .payment__price__box
+          .price__text
+            支払い金額
+          .price__money
+            10000
+        .payment__price__point
+          .point__box
+            .point__box__text
+              ■ ポイントを使用
+            .point__box__value
+              (所持ポイント:P0)
+      .payment__card
+        .payment__card__method
+          .method__text
+            支払い方法
+          .method__change
+            = link_to '変更する',"#"
+        .payment__card__info
+          .info__name
+            クレジットカード
+          .info__number
+            **** **** ****
+      .payment__address
+        .payment__address__method
+          .address__text
+            配送先
+          .address__change
+            = link_to '変更する',"#"
+        .payment__address__number
+          000-0000
+        .payment__address__text
+          東京都
+          新宿区
+          高田馬場
+          333
+        .payment__address__name
+          山田太郎
+    .container__main__bottom
+      .bottom__buy
+        = form_tag('#') do
+          %button.purchase
+            購入する
+.container__bottom
+  .container__bottom__terms
+    .terms__list
+      = link_to 'プライバシーポリシー','#'
+    .terms__list
+      = link_to 'FURIMA利用規約','#'
+    .terms__list
+      = link_to '特定取引に関する表記','#'
+  .container__bottom__icon
+    .icon__img
+      = image_tag('logo.png',size:"123x33")
+      .icon__img__text
+        %p
+          ©︎ FURIMA,inc.
+
+
+
+
+
+
+
+
+
+

@@ -83,7 +83,7 @@
             .required
               必須
           .input-select
-            = address.select :prefecture_id,@prefectures.map{|prefecture| [prefecture.name, prefecture.id]}
+            = address.select :prefecture_id,Prefectures.map{|prefecture| [prefecture.name, prefecture.id]}
 
         .field
           .label

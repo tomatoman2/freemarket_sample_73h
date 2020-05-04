@@ -16,7 +16,9 @@ class User < ApplicationRecord
   # belongs_to :user, inverse_of: :address
 
   validates :nickname,presence: true
-  validates :kana_name,presence: true
+  validates :family_name,presence: true
+  validates :first_name,presence: true
+  validates :kana_family_name,presence: true
+  validates :kana_first_name,presence: true
   validates :birthday,presence: true
-  validates :name,presence: true
 end

@@ -45,9 +45,9 @@
             必須
         .name-box
           .field__input
-            = f.text_field :name, placeholder: "例）伊藤", autocomplete: "name"
+            = f.text_field :family_name, placeholder: "例）伊藤", autocomplete: "name"
           .field__input
-            = f.text_field :name, placeholder: "例）花子", autocomplete: "name"
+            = f.text_field :first_name, placeholder: "例）花子", autocomplete: "name"
 
       .field
         .label
@@ -56,9 +56,9 @@
             必須
         .name-box
           .field__input
-            = f.text_field :kana_name, placeholder: "例）イトウ", autocomplete: "kana_name"
+            = f.text_field :kana_family_name, placeholder: "例）イトウ", autocomplete: "kana_name"
           .field__input
-            = f.text_field :kana_name, placeholder: "例）ハナコ", autocomplete: "kana_name"
+            = f.text_field :kana_first_name, placeholder: "例）ハナコ", autocomplete: "kana_name"
 
       .field
         .label
@@ -83,7 +83,7 @@
             .required
               必須
           .input-select
-            = address.select :prefecture_id,Prefectures.map{|prefecture| [prefecture.name, prefecture.id]}
+            = address.select :prefecture_id,Prefecture.all.map{|prefecture| [prefecture.name, prefecture.id]}
 
         .field
           .label
@@ -119,5 +119,5 @@
             = address.text_field :telehone_number, autocomplete: "telehone_number"
 
       .field__actions
-        = f.submit "登録", class: 'btn'
+        = f.submit "登録", class: 'bt'
     = render "users/shared/links"

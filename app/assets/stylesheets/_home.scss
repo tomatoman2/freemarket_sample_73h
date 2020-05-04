@@ -133,7 +133,7 @@
   }
 
   &__middleVisual {
-    background-image: url("/assets/bg-Middle.jpg");
+    background-image: image-url("bg-Middle.jpg");
     background-position: bottom right;
     height: 400px;
     background-size: cover;

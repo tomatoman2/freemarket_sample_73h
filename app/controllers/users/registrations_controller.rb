@@ -19,12 +19,12 @@ end
 #   user.save
 # end
 
-def new
-  @user = User.new
-  @user.addresses.build
-  @prefectures = Prefecture.all
-  super
-end
+# def new
+#   @user = User.new
+#   @user.addresses.build
+#   @prefectures = Prefecture.all
+#   super
+# end
   # # GET /resource/sign_up
   # def new
   #   @prefectures = Prefecture.all

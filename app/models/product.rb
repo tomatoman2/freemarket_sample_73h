@@ -16,4 +16,6 @@ class Product < ApplicationRecord
   belongs_to :brand
   belongs_to :category
   belongs_to :code
+
+  accepts_nested_attributes_for :product_images, allow_destroy: true
 end

@@ -4,9 +4,16 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     passwords: 'users/passwords'
   }
+
   root 'home#index'
+
+  resources :users
   resources :items
-  resources  :users
+  scope :items do
+    namespace :api do
+      resources :category, only: :index, defaults: { format: 'json' }
+    end
+  end
   resources :orders
 
 end

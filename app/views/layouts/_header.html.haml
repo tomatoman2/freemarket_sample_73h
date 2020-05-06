@@ -15,13 +15,8 @@
         = link_to 'カテゴリー', '#', class: 'choice'
         %li
         = link_to 'ブランド', '#', class: 'choice'
-
       %ul.navi__right
-        - if user_signed_in?
-          %li
-          = link_to 'ログアウト', destroy_user_session_path, method: :delete
-        - else
-          %li
-          = link_to 'ログイン', new_user_session_path
-          %li
-          = link_to '新規会員登録', new_user_registration_path
+        %li
+        = link_to 'ログイン', '#'
+        %li
+        = link_to '新規会員登録', '#'

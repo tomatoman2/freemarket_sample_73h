@@ -5,6 +5,10 @@
   display:flex;
   align-items:center;
 }
+@mixin space_between(){
+  display:flex;
+  justify-content:space-between;
+}
 
 .new-items{
   margin-bottom:50px;
@@ -21,23 +25,88 @@
     }
     .item-images{
       padding:40px;
-      &__input{
-        input[type="file"]{
-          display:none;
-        }
-        .file-area{
-          height:148px;
-          width:100%;
-          background-color:#eee;
-          cursor: pointer;
-          line-height: 100%;
-          @include align_item_center();
-          text-align:center;
-          &__message{
-            width:100%;
-            margin:0 auto;
-            font-size:12px;
+
+      &__field{
+        display:flex;
+        flex-wrap:wrap;
+        width:100%;
+        &__previews--first,&__previews--second{
+          display:flex;
+          flex-wrap:wrap;
+          .preview{
+            margin:0;
+            img{
+              width:100%;
+            }
           }
+        }
+        &__input{
+          label{
+            display:none;
+          }
+          label:last-of-type{
+            display:inline;
+          }
+
+          margin:0;
+          input[type="file"]{
+            display:none;
+          }
+          .file-area{
+            height:148px;
+            background-color:#eee;
+            cursor: pointer;
+            line-height: 100%;
+            @include align_item_center();
+            text-align:center;
+            &__message{
+              width:100%;
+              margin:0 auto;
+              font-size:12px;
+            }
+          }
+        }
+        .images-count--1{
+          width:20%;
+        }
+        .images-count--2{
+          width:40%;
+        }
+        .images-count--3{
+          width:60%;
+        }
+        .images-count--4{
+          width:80%;
+        }
+        .field-width--0{
+          width:100%;
+        }
+        .field-width--1{
+          width:80%;
+        }
+        .field-width--2{
+          width:60%;
+        }
+        .field-width--3{
+          width:40%;
+        }
+        .field-width--4{
+          width:20%;
+        }
+        .preview-width--1{
+          width:100%;
+        }
+        .preview-width--2{
+          width:50%;
+        }
+        .preview-width--3{
+          width:33%;
+        }
+        .preview-width--4{
+          width:25%;
+        }
+        .preview-width--0{
+          width:20%;
         }
       }
     }
@@ -49,6 +118,14 @@
     }
     .item-details{
       padding:40px;
+      &__item-category{
+        #category2{
+          margin-top:16px;
+        }
+        #category3{
+          margin-top:16px;
+        }
+      }
       &__item-brand{
         @include default_item_margin();
       }
@@ -71,8 +148,7 @@
     .item-price{
       padding:40px;
       &__price{
-        display:flex;
-        justify-content:space-between;
+        @include space_between();
 
         .label{
           margin:0;
@@ -85,6 +161,14 @@
           }
         }
       }
+    }
+    .item-fee{
+      padding:0 40px;
+      @include space_between();
+    }
+    .item-profit{
+      padding:0 40px;
+      @include space_between();
     }
     .actions{
       padding-top:40px;

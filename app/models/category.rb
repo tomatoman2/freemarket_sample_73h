@@ -3,4 +3,8 @@ class Category < ApplicationRecord
   validates :level, presence: true
   validates :name, presence: true
 
+  def self.search_children(parent_id)
+    Category.where(parent_id: parent_id)
+  end
+
 end

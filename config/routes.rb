@@ -12,10 +12,15 @@ Rails.application.routes.draw do
   
   root to: "home#index"
 
-  resources :items
-  resources  :users
-  resources :orders
 
+  resources :users
+  resources :items
+  scope :items do
+    namespace :api do
+      resources :category, only: :index, defaults: { format: 'json' }
+    end
+  end
+  resources :orders
 
 end
 

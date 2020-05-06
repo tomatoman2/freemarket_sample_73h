@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :set_current_user
+
   GROUP_ITEM_STATUS = 100
   GROUP_ITEM_POSTAGE = 101
   GROUP_ITEM_DELIVERY_TIME = 102
@@ -42,6 +44,20 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+    @product = Product.find(params[:id])
+    @grandchild = Category.find_by(id: @product[:category_id])
+    @children = Category.find_by(id: @grandchild[:parent_id])
+    @parent = Category.find_by(id: @children[:parent_id])
+    @prefecture = Prefecture.find_by(id: @product[:prefecture_id])
+    @status = Code.find_by(group_id: GROUP_ITEM_STATUS, code_id: @product[:status])
+    @delivery = Code.find_by(group_id: GROUP_ITEM_POSTAGE, code_id: @product[:delivery_time_code])
+    @postage = Code.find_by(group_id: GROUP_ITEM_DELIVERY_TIME, code_id: @product[:postage_code])
+    @image = ProductImage.find_by(product_id: params[:id]) 
+    @images = ProductImage.where(@product[:product_id])
+    @images = ProductImage.where(product_id: @product[:id])
+  end
+
   private
   def product_params
     params.require(:product).permit(
@@ -67,6 +83,10 @@ class ItemsController < ApplicationController
     @postages = Code.group_search(GROUP_ITEM_POSTAGE)
     @delivery_times = Code.group_search(GROUP_ITEM_DELIVERY_TIME)
     @prefectures = Prefecture.all
+  end
+
+  def set_current_user
+    @current_user = User.find_by(id: session[:user_id])
   end
 
 end

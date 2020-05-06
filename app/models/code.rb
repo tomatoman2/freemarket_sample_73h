@@ -1,4 +1,5 @@
 class Code < ActiveHash::Base
+  
   self.data = [
       {id:1, group_id:100, group_name:"商品の状態", code_id:0, code_name:"新品、未使用"},
       {id:2, group_id:100, group_name:"商品の状態", code_id:1, code_name:"未使用に近い"},

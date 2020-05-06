@@ -17,8 +17,5 @@ class Product < ApplicationRecord
   belongs_to :brand, optional: true
   belongs_to :category, optional: true
   belongs_to :code, optional: true
-
-
-  accepts_nested_attributes_for :product_images
-  
+  accepts_nested_attributes_for :product_images, allow_destroy: true
 end

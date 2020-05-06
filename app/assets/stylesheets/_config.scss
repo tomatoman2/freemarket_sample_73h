@@ -38,6 +38,7 @@ body{
   margin-bottom:16px;
 }
 //入力項目（一行テキスト）
+
 input[type="text"],input[type="number"]{
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -47,6 +48,7 @@ input[type="text"],input[type="number"]{
   padding: 0 16px;
   width: 100%; 
 }
+
 input[type="number"]{
   text-align:right;
 }

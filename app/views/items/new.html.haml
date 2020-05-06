@@ -20,12 +20,11 @@
           .item-images__field__input.input.field-width--0
             = f.fields_for :product_images do |image|
               %label#input-0
-                = image.file_field :image_name #, :multiple => true
-                -#= image.hidden_field :id, value: image.object.id
+                = image.file_field :image_name
                 .file-area
                   .file-area__message
                     %p
-                      =image_tag "camera.png",width:"20px"
+                      =image_tag asset_path("camera.png"),width:"20px"
                       %br
                       クリックしてファイルをアップロード
       %hr

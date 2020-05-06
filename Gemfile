@@ -68,15 +68,19 @@ group :test do
   gem 'chromedriver-helper'
 end
 
+group :production do
+  gem 'unicorn'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'haml-rails'
 gem 'active_hash', '~> 2.3.0'
-gem 'font-awesome-sass', '~> 5.4.1'
+gem 'font-awesome-sass'
 gem "jquery-rails"
-gem 'carrierwave', '~> 1.3', '>= 1.3.1'
-
+gem 'carrierwave'
+gem 'mini_magick'
 group :production do
   gem 'unicorn'
 end

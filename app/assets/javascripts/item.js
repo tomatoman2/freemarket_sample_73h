@@ -56,7 +56,6 @@ $(function(){
 
       });
     } else {
-      // alert("メッセージを入力してください");
       return false;
     }
   }
@@ -77,15 +76,6 @@ $(function(){
   //--プレビュー---------------------------------
   //イメージプレビュー用の処理
   // 画像用のinputを生成する関数
-  const buildFileField = (num)=> {
-    const html = `<div data-index="${num}" class="js-file_group">
-                    <input class="js-file" type="file"
-                    name="product[images_attributes][${num}][src]"
-                    id="product_images_attributes_${num}_src"><br>
-                    <div class="js-remove">削除</div>
-                  </div>`;
-    return html;
-  }  
   function buildPreview(index, url){
     const html = `
       <div class="preview" id="preview-${index}">
@@ -108,15 +98,13 @@ function buildFilefield(index){
     return html;
   }
   
-  // file_fieldのnameに動的なindexをつける為の配列
-  // let fileIndex = [1,2,3,4,5,6,7,8,9,10];
+
   let imagesCount = 0;
   let addCount = 0;
   //DataTransferオブジェクトで、データを格納する箱を作る
   //querySelectorでfile_fieldを取得
   $(document).on('change',"input[type=file]", function(e){
     // //ファイルオブジェクトを取得する
-    // // var file = e.target.files[0];
     var file = $(this).prop('files')[0];
 
     imagesCount += 1;
@@ -124,17 +112,14 @@ function buildFilefield(index){
     $('.item-images__field__input').append(buildFilefield(addCount));
     $(`#product_product_images_attributes_${addCount}_image_name`).after($(".file-area").first().clone());
 
-    // fileIndex.shift();
+
     // 末尾の数に1足した数を追加する
-    // fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
     blobUrl = window.URL.createObjectURL(file)
 
     // fileIndexの先頭の数字を使ってinputを作る
     if (imagesCount <= 5){
-      //$('.item-images__field__previews--first').append(buildPreview(fileIndex[0],blobUrl));
       $('.item-images__field__previews--first').append(buildPreview(addCount,blobUrl));
     } else {
-      //$('.item-images__field__previews--second').append(buildPreview(fileIndex[0],blobUrl));
       $('.item-images__field__previews--second').append(buildPreview(addCount,blobUrl));
     }
     setPreviewClass(imagesCount);

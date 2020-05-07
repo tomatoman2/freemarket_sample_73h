@@ -42,6 +42,19 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+    @product = Product.find(params[:id])
+    @grandchild = Category.find_by(id: @product[:category_id])
+    @children = Category.find_by(id: @grandchild[:parent_id])
+    @parent = Category.find_by(id: @children[:parent_id])
+    @prefecture = Prefecture.find_by(id: @product[:prefecture_id])
+    @status = Code.find_by(group_id: GROUP_ITEM_STATUS, code_id: @product[:status])
+    @delivery = Code.find_by(group_id: GROUP_ITEM_POSTAGE, code_id: @product[:delivery_time_code])
+    @postage = Code.find_by(group_id: GROUP_ITEM_DELIVERY_TIME, code_id: @product[:postage_code])
+    @image = ProductImage.find_by(product_id: params[:id]) 
+    @images = ProductImage.where(product_id: @product[:id])
+  end
+
   private
   def product_params
     params.require(:product).permit(

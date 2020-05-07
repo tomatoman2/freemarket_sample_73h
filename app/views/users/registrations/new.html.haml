@@ -68,15 +68,6 @@
         .input-select
           = f.date_select :birthday, use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1)
   
-        .field
-          .label
-            = f.label :都道府県
-            .required
-              必須
-          .input-select
-            = address.select :prefecture_id,Prefecture.all.map{|prefecture| [prefecture.name, prefecture.id]}
-
       .field__actions
         = f.submit "次へ", class: 'bt'
-        = f.submit "登録", class: 'bt'
     = render "users/shared/links"

@@ -4,6 +4,7 @@ ja:
   activerecord:
     models:
       product: 商品
+      address: 住所
     attributes:
       product:
         id: ID
@@ -21,3 +22,15 @@ ja:
         prefecture_id: 発送元の地域
         delivery_time_code: 発送までの日数
         size: サイズ
+      address:
+          id: ID
+          postal_code: 郵便番号
+          city: 市町村
+          street: 番地
+      user:
+        password: パスワード
+        nickname: ニックネーム
+        family_name: 名字
+        first_name: 名前
+        kana_family_name: 名字（カナ）
+        kana_first_name: 名前（カナ）

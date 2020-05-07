@@ -9,13 +9,12 @@ Rails.application.routes.draw do
 
   resources :users
   resources :items
+  resources :orders, only: [:new, :create]
   scope :items do
     namespace :api do
       resources :category, only: :index, defaults: { format: 'json' }
     end
   end
-  resources :orders
-
 end
 
 

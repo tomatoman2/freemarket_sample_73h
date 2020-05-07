@@ -155,8 +155,31 @@
               color: #333;
               border: 1px solid #333;
               text-decoration: none;
+              cursor: pointer;
             }
             .report:hover {
+              opacity: 0.5;
+            }
+          }
+        }
+        //出品者編集・削除フォーム
+        .user__option {
+          padding-top: 15px;
+          ul {
+            display: flex;
+            list-style: none;
+            padding-left: 0;
+            li {
+              margin-right: 10px;
+              padding: 6px 10px;
+              border-radius: 40px;
+              border: 1px solid rgb(243, 164, 223);
+              a {
+                text-decoration: none;
+                color: rgb(243, 164, 223);
+              }
+            }
+            li:hover {
               opacity: 0.5;
             }
           }
@@ -186,6 +209,7 @@
           text-align: left;
         }
         &__btn {
+          cursor: pointer;
           margin: 20px auto 0;
           line-height: 48px;
           background: #3CCACE;
@@ -194,6 +218,69 @@
           width: 60%;
           font-size: 18px;
           border-radius: 100px;
+        }
+      }
+      //購入フォーム
+      .buy  {
+        padding: 24px;
+        background-color: #fff;
+        margin: 10px 0;
+        text-align: center;
+        &__form {
+          cursor: pointer;
+          margin:  0 auto;
+          line-height: 48px;
+          background: #ea352d;
+          border: 1px solid #ea352d;
+          width: 60%;
+          font-size: 18px;
+          border-radius: 100px;
+          color: #fff;
+          a {
+            text-decoration: none;
+            color: #fff;
+          }
+        }
+      }
+      //未登録・ログアウト状態
+      .unregistered {
+        padding: 24px;
+        background-color: #fff;
+        margin: 10px 0;
+        text-align: center;
+        .choice {
+          padding-top: 15px;
+          display: flex;
+          .signin {
+            cursor: pointer;
+            margin:  0 auto;
+            line-height: 48px;
+            background: #fdd25d;
+            border: 1px solid #fdd25d;
+            width: 40%;
+            font-size: 18px;
+            border-radius: 100px;
+            color: #fff;
+            a {
+              text-decoration: none;
+              color: #fff;
+            }
+          }
+          .signup {
+            cursor: pointer;
+            margin:  0 auto;
+            line-height: 48px;
+            background: #fdd25d;;
+            border: 1px solid #fdd25d;;
+            width: 40%;
+            font-size: 18px;
+            border-radius: 100px;
+            color: #fff;
+            a {
+              text-decoration: none;
+              color: #fff;
+            }
+          }
         }
       }
       .link {

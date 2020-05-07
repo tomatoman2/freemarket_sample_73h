@@ -2,7 +2,7 @@
   .account__main
     .account__heder
       会員登録
-    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = form_for(@user, url: user_registration_path) do |f|
       = render "devise/shared/error_messages", resource: resource
       .field
         .label
@@ -28,7 +28,7 @@
           .required
             必須
         .field__input
-          = f.password_field :password, autocomplete: "new-password"
+          = f.password_field :password, autocomplete: "off"
 
       .field
         .label
@@ -36,7 +36,7 @@
           .required
             必須
         .field__input
-          = f.password_field :password_confirmation, autocomplete: "new-password"
+          = f.password_field :password_confirmation
 
       .field
         .label
@@ -45,9 +45,9 @@
             必須
         .name-box
           .field__input
-            = f.text_field :family_name, placeholder: "例）伊藤", autocomplete: "name"
+            = f.text_field :family_name, placeholder: "例）伊藤", autocomplete: "family_name"
           .field__input
-            = f.text_field :first_name, placeholder: "例）花子", autocomplete: "name"
+            = f.text_field :first_name, placeholder: "例）花子", autocomplete: "given-name"
 
       .field
         .label
@@ -67,57 +67,7 @@
             必須
         .input-select
           = f.date_select :birthday, use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1)
-      
-      = f.fields_for :addresses do |address|
-        .field
-          .label
-            = f.label :郵便番号
-            .required
-              必須
-          .field__input
-            = address.text_field :postal_code, placeholder: "例）123-4567", autocomplete: "postal_code"
-
-        .field
-          .label
-            = f.label :都道府県
-            .required
-              必須
-          .input-select
-            = address.select :prefecture_id,Prefecture.all.map{|prefecture| [prefecture.name, prefecture.id]}
-
-        .field
-          .label
-            = f.label :市町村
-            .required
-              必須
-          .field__input
-            = address.text_field :city, autocomplete: "city"
-
-        .field
-          .label
-            = f.label :番地
-            .required
-              必須
-          .field__input
-            = address.text_field :street, autocomplete: "street"
-
-
-        .field
-          .label
-            = f.label :マンション名やビル名
-            .field__any
-              任意
-          .field__input
-            = address.text_field :building_name, autocomplete: "building_name"
-
-        .field
-          .label
-            = f.label :お届け先電話番号
-            .field__any
-              任意
-          .field__input
-            = address.text_field :telehone_number, autocomplete: "telehone_number"
-
+  
       .field__actions
-        = f.submit "登録", class: 'bt'
+        = f.submit "次へ", class: 'bt'
     = render "users/shared/links"

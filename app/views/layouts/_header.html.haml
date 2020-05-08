@@ -9,7 +9,6 @@
             = f.text_field :search, placeholder: "キーワードから探す", class: 'input'
             .header__search__submit
               = image_tag asset_path('search.png'), class: 'header__search__form__submit'
-
     .header__main__navi
       %ul.navi__left
         %li
@@ -22,3 +21,4 @@
         - else
           = link_to 'ログイン', new_user_session_path
           = link_to '新規登録', new_user_registration_path
+

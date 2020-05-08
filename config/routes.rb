@@ -3,8 +3,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations',
     passwords: 'users/passwords'
-  }
-  
+  } 
   devise_scope :user do
     get 'addresses', to: 'users/registrations#new_address'
     post 'addresses', to: 'users/registrations#create_address'
@@ -21,7 +20,4 @@ Rails.application.routes.draw do
     end
   end
   resources :orders
-
 end
-
-

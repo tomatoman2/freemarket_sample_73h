@@ -1,0 +1,24 @@
+= render 'layouts/header'
+.item_all_product
+  .item_all_product__get
+    商品一覧
+  .item_all_product__info
+    - @items.each do |item|
+      = link_to '#' ,class: 'box_infomation' do
+        .item_all_product__info__box
+          - if item.order == nil
+            .item_all_product__info__box__sold
+              SOLD
+          - else 
+            .item_all_product__info__box__soldout
+              SOLD OUT
+          .item_all_product__info__box__image
+            = image_tag item.product_images[0].image_name.url ,class: 'image_user'               
+          .item_all_product__info__box__textbox
+            .textbox_sentence
+              = item.name
+            .textbox_num
+              .textbox_num__price
+                = item.price
+                円
+        

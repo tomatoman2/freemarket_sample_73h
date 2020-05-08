@@ -1,0 +1,22 @@
+.header
+  .header__main
+    .header__main__title
+      .header__icon
+        = link_to image_tag('logo.png',size: '140x40'), root_path, class: 'icon'
+      .header__search
+        = form_for '#' do |f|
+          .header__search__form
+            = f.text_field :search, placeholder: "キーワードから探す", class: 'input'
+            .header__search__submit
+              = image_tag 'search.png', class: 'header__search__form__submit'
+    .header__main__navi
+      %ul.navi__left
+        %li
+        = link_to 'カテゴリー', '#', class: 'choice'
+        %li
+        = link_to 'ブランド', '#', class: 'choice'
+      %ul.navi__right
+        %li
+        = link_to 'ログイン', '#'
+        %li
+        = link_to '新規会員登録', '#'

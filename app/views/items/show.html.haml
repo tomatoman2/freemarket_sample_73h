@@ -1,3 +1,5 @@
+%body
+= render partial: 'layouts/header'
 %nav.menu
   %ul
     %li
@@ -5,71 +7,73 @@
     %li
       = icon('fa','angle-right')
     %li
-      = link_to "ベビー・キッズ", '#'
+      = link_to @parent.name
     %li
       = icon('fa','angle-right')
     %li
-      = link_to "おもちゃ", '#'
+      = link_to @children.name
     %li
       = icon('fa','angle-right')
     %li
-      = link_to "その他", '#'
+      = link_to @grandchild.name
 .main
   .main__sub
     .content
       .content__form
         .content__form__name
-          product
+          = @product.name
         .content__form__body
           %ul
             %li
-              = image_tag src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png", class: 'photo'
-              %ul.gallery
-                %li
-                  = image_tag src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png", class: 'gallery'
-                %li
-                  = image_tag src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/8/a002.png", class: 'gallery'
-                %li
-                  = image_tag src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/9/a003.png", class: 'gallery'
+              = image_tag @image.image_name.url, class: 'photo'
+              %ul
+                - @images.each do |image|
+                  %li= image_tag image.image_name.url, class: 'gallery'
         .content__form__price
           .price
-            ¥10000
+            = @product.price
           .tax
             (税込) 送料込み
         .content__form__text
-          親譲りの無鉄砲で小供の時から損ばかりしている。 小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。 なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。 弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
+          = @product.explanation
         .content__form__table
           %table
             %tr
               %th 出品者
-              %td hoge
+              %td
+                = @product.name
             %tr
               %th カテゴリー
               %td
-                = link_to 'ベビー・キッズ', '#'
+                = link_to @parent.name
                 %br
-                = link_to 'おもちゃ', '#'
+                = link_to @children.name
                 %br
-                = link_to 'その他'
+                = link_to @grandchild.name
             %tr
               %th ブランド
               %td
+                = @product.brand_name
             %tr
               %th 商品のサイズ
               %td
+                = @product.size
             %tr
               %th 商品の状態
-              %td 新品/未使用
+              %td
+                = @status.code_name
             %tr
               %th 配送料の負担
-              %td 着払い（購入者負担）
+              %td
+                = @postage.code_name
             %tr
               %th 発送元の地域
               %td
-                = link_to '東京都', '#'
+                = @prefecture.name
             %tr
               %th 発送日の目安
-              %td 1-2日で発送
+              %td
+                = @delivery.code_name
         .content__form__option
           .option
             .like
@@ -79,6 +83,13 @@
             .report
               = icon('fa', 'flag', class: 'report__icon')
               不適切な商品の通報
+        - if user_signed_in? && current_user.id == @product.user_id
+          .user__option
+            %ul
+              %li
+                = link_to '▶︎編集する', '#'
+              %li
+                = link_to '▶︎削除する', '#'
       .content__comment
         = form_for '#' do |f|
           = f.text_area :comment, class: 'textarea'
@@ -89,6 +100,17 @@
         .content__comment__btn
           = icon('fa', 'comment')
           コメントする
+      - if user_signed_in? && current_user.id != @product.user_id
+        .buy
+          .buy__form
+            = icon('fa', 'cart-arrow-down')
+            = link_to '購入画面にすすむ', '#'
+      - unless user_signed_in? && current_user.id && @product.user_id
+        .unregistered
+          購入には新規登録/ログインが必要です
+          .choice
+            = link_to 'ログイン', new_user_session_path, class: 'signin'
+            = link_to '新規登録', new_user_registration_path, class: 'signup'
       .link
         .link__left
           = link_to icon('fa', 'angle-left', "前の商品"), '#', class: 'left__icon'

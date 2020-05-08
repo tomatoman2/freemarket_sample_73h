@@ -10,10 +10,14 @@ class Product < ApplicationRecord
 
   has_many :likes
   has_many :comments
-  has_many :product_images
-  has_one :order
-  belongs_to :user
-  belongs_to :brand
-  belongs_to :category
-  belongs_to :code
+
+  has_many :product_images, dependent: :destroy
+  #テスト段階ではとりあえず全てにoptional:trueをつけておく。関連テーブルのデータがなくても登録できるようにする
+  has one :order, optional: true
+  belongs_to :user, optional: true
+  belongs_to :brand, optional: true
+  belongs_to :category, optional: true
+  belongs_to :code, optional: true
+  accepts_nested_attributes_for :product_images, allow_destroy: true
+
 end

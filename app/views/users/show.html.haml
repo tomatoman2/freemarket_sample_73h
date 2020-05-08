@@ -1,5 +1,6 @@
-= render 'layouts/header'
-%ul.mypage_top
+
+= render partial: 'layouts/header'
+.mypage_top
   %li.mypage_top__navi
     = link_to 'フリマ', '#', class: 'hurima'
     = icon("fa", "angle-right")
@@ -82,4 +83,5 @@
       %li.mypage_side__menu__prf.abc
         = link_to '電話番号の確認', '#', class: 'setting_link' 
       %li.mypage_side__menu__list.abc
-        = link_to 'ログアウト', '#', class: 'menu_link'
+        = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'menu_link'
+

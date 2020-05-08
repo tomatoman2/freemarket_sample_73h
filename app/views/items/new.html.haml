@@ -1,5 +1,11 @@
 .new-items
   .input-form
+    -if !@error_messages.empty?
+      .from-error
+        = @error_messages
+    -@item.errors.full_messages.each do |message|
+      .form-error
+        = message
     = form_with model: [@item] ,url: items_path,local: true do |f|
       .item-images
         .item-images__label.label
@@ -8,20 +14,19 @@
             必須
           %p
             最大10枚までアップロードできます
-        .item-images__input.input
-          = f.fields_for :product_images do |image|
-            %label
-              = image_tag image.object.image_name if image.object.image_name?
-              = image.file_field :image
-              = image.hidden_field :id, value: image.object.id
-              .file-area
-                .file-area__message
-                  %p
-                    =image_tag "camera.png",width:"20px"
-                    %br
-                    ドラッグアンドドロップ
-                    %br
-                    またはクリックしてファイルをアップロード
+        .item-images__field
+          .item-images__field__previews--first.images-count--0#item-images__field__previews--first
+          .item-images__field__previews--second#item-images__field__previews--second
+          .item-images__field__input.input.field-width--0
+            = f.fields_for :product_images do |image|
+              %label#input-0
+                = image.file_field :image_name
+                .file-area
+                  .file-area__message
+                    %p
+                      =image_tag asset_path("camera.png"),width:"20px"
+                      %br
+                      クリックしてファイルをアップロード
       %hr
       .item-info
         .item-info__item-name
@@ -30,7 +35,7 @@
             %span.required
               必須
           .input
-            =f.text_field :name,placeholder: "40文字まで"
+            =f.text_field :name
         .item-info__item-explanation
           .label
             =f.label :explanation
@@ -47,17 +52,19 @@
             =f.label :category_id
             %span.required
               必須
-          .input-select
-            = f.select :category_id,Category.where(level: 0).map{|category| [category.name, category.id]},prompt: true 
+          .input-select#category1
+            = f.select :category1 ,Category.where(level: 0).map{|category| [category.name, category.id]},prompt: true
             %svg{"aria-hidden": "true", fill: "#888888", "fill-rule": "evenodd", height: "24", viewbox: "0 0 24 24", width: "24"}
               %path{d: "M12,15.66a1.73,1.73,0,0,1-1.2-.49L5.21,9.54a.7.7,0,0,1,1-1l5.62,5.62c.15.15.27.15.41,0L17.8,8.6a.71.71,0,0,1,1,0,.69.69,0,0,1,0,1l-5.57,5.58A1.71,1.71,0,0,1,12,15.66Z"}
+          .input-select#category2
+          .input-select#category3
         .item-details__item-brand
           .label
-            =f.label :brand_id
+            =f.label :brand_name
             %span.any
               任意
           .input
-            =f.text_field :brand_id,placeholder: "例）シャネル"
+            =f.text_field :brand_name,placeholder: "例）シャネル"
         .item-details__item-size
           .label
             =f.label :size
@@ -98,17 +105,17 @@
               %path{d: "M12,15.66a1.73,1.73,0,0,1-1.2-.49L5.21,9.54a.7.7,0,0,1,1-1l5.62,5.62c.15.15.27.15.41,0L17.8,8.6a.71.71,0,0,1,1,0,.69.69,0,0,1,0,1l-5.57,5.58A1.71,1.71,0,0,1,12,15.66Z"}
         .delivery-info__delivery_time
           .label
-            =f.label :delivery_time
+            =f.label :delivery_time_code
             %span.required
               必須
           .input-select
-            = f.select :delivery_time,@delivery_times.map{|delivery_time| [delivery_time.code_name, delivery_time.code_id]},prompt: true 
+            = f.select :delivery_time_code,@delivery_times.map{|delivery_time| [delivery_time.code_name, delivery_time.code_id]},prompt: true 
             %svg{"aria-hidden": "true", fill: "#888888", "fill-rule": "evenodd", height: "24", viewbox: "0 0 24 24", width: "24"}
               %path{d: "M12,15.66a1.73,1.73,0,0,1-1.2-.49L5.21,9.54a.7.7,0,0,1,1-1l5.62,5.62c.15.15.27.15.41,0L17.8,8.6a.71.71,0,0,1,1,0,.69.69,0,0,1,0,1l-5.57,5.58A1.71,1.71,0,0,1,12,15.66Z"}
       %hr
       .item-price
         %p
-          価格（¥300~9,999,999）
+          価格
         .item-price__price
           .label
             =f.label :price
@@ -117,6 +124,20 @@
           .input
             ¥
             =f.text_field :price ,type: "number",placeholder: "0"
+      %hr
+      .item-fee
+        %p
+          販売手数料（10%）
+        .item-fee__price
+          %p
+            \-
+      %hr
+      .item-profit
+        %p
+          販売利益
+        .item-profit__price
+          %p
+            \-
       %hr
       .actions
         =f.submit "出品する", class: 'actions__submit-button'

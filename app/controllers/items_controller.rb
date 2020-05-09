@@ -2,8 +2,9 @@ class ItemsController < ApplicationController
   GROUP_ITEM_STATUS = 100
   GROUP_ITEM_POSTAGE = 101
   GROUP_ITEM_DELIVERY_TIME = 102
-  
-  def index
+
+  def index   
+    @items = Product.all.includes(:user)
   end
   def new
     begin
@@ -82,5 +83,5 @@ class ItemsController < ApplicationController
     @delivery_times = Code.group_search(GROUP_ITEM_DELIVERY_TIME)
     @prefectures = Prefecture.all
   end
-
 end
+

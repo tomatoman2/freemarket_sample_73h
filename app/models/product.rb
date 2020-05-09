@@ -14,7 +14,7 @@ class Product < ApplicationRecord
 
   has_many :product_images, dependent: :destroy
   #テスト段階ではとりあえず全てにoptional:trueをつけておく。関連テーブルのデータがなくても登録できるようにする
-  has one :order, optional: true
+  has_one :order
   belongs_to :user, optional: true
   belongs_to :brand, optional: true
   belongs_to :category, optional: true

@@ -8,7 +8,8 @@ class Product < ApplicationRecord
   validates :prefecture_id, presence: true
   validates :delivery_time_code, presence: true
 
-  has_many :likes
+  has_many :likes, dependent: :destroy
+  has_many :liked_users, through: :likes, source: :user
   has_many :comments
 
   has_many :product_images, dependent: :destroy

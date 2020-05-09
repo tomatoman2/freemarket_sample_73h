@@ -132,6 +132,7 @@
           .option {
             margin: 10px 0 0;
             display: flex;
+            //いいねフォーム
             .like {
               cursor: pointer; 
               display: flex;
@@ -142,11 +143,13 @@
               border: 1px solid #ffb340;
               &__icon {
                 margin: auto;
+                color: #3CCACE;
               }
             }
             .like:hover {
               opacity: 0.5;
             }
+            //不適切な商品の通報フォーム
             .report {
               font-size: 14px;
               padding: 6px 10px;

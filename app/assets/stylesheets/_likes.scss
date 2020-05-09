@@ -1,0 +1,102 @@
+* {
+  box-sizing: border-box;
+}
+.likes {
+  display: block;
+  width: 1020px;
+  margin: 40px auto 0;
+  padding-bottom: 40px;
+  .likes-contents {
+    display: block;
+    width: 700px;
+    float: right;
+    .chapter {
+      background-color: #ffffff;
+      &__header {
+        font-size: 24px;
+        padding: 8px 24px;
+        border-bottom: 1px solid #f5f5f5;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+      }
+      ul {
+        list-style: none;
+        li {
+          border-bottom: 1px solid #eee;
+          .my-page-item {
+            display: block;
+            min-height: 80px;
+            padding: 16px;
+            color: #333;
+            figure {
+              position: relative;
+              overflow: hidden;
+              float: left;
+              width: 48px;
+              height: 48px;
+              .img {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 1;
+                width: 100%;
+              }
+            }
+            .my-page-body {
+              margin: 0 40px 0 68px;
+              .text {
+                overflow: hidden;
+                display: block;
+                display: -webkit-box;
+                max-height: 4.4em;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                text-overflow: ellipsis;
+                line-height: 1.5;
+              }
+            }
+          }
+        }
+        li:hover {
+          background-color: rgb(242, 247, 248);
+        }
+      }
+    }
+  }
+  .likes-side {
+    float: left;
+    width: 280px;
+    margin: 0 40px 0 0;
+    .likes-navi {
+      display: block;
+      ul {
+        list-style: none;
+        .likes-list {
+          position: relative;
+          display: block;
+          min-height: 48px;
+          padding: 16px;
+          background: #fff;
+          font-size: 14px;
+          color: #333;
+          cursor: pointer;
+          border-bottom: 1px solid #eee;
+          a {
+            text-decoration: none;
+            color: black;
+          }
+        }
+        .likes-list:hover {
+          background-color: rgb(242, 247, 248);
+        }
+      }
+    }
+  }
+}
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}

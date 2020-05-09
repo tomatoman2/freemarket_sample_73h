@@ -1,4 +1,3 @@
-%body
 = render partial: 'layouts/header'
 %nav.menu
   %ul
@@ -77,8 +76,16 @@
         .content__form__option
           .option
             .like
-              = icon('fa', 'star', class: 'like__icon')
-              お気に入り0
+              - if current_user.already_liked?(@product)
+                = link_to item_like_path(@product), method: :delete do
+                  = icon('fas','star', class: 'like__icon')
+                  お気に入り
+                = @product.liked_users.count
+              - else
+                = link_to item_likes_path(@product), method: :post do
+                  = icon('far', 'star', class: 'like__icon')
+                  お気に入り
+                = @product.liked_users.count
           .option
             .report
               = icon('fa', 'flag', class: 'report__icon')

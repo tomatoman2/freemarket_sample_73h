@@ -5,10 +5,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
         
   has_many :credit_cards
-  # has_many :addresses, inverse_of: :user
-  has_many :likes
-  has_many :coments
-  has_many :products
+  # has_many :addresses
+  has_many :likes, dependent: :destroy
+  has_many :liked_products, through: :likes, source: :product
+  def already_liked?(product)
+    likes.exists?(product_id: product.id)
+  end
+  has_many :coments, dependent: :destroy
+  has_many :products, dependent: :destroy
   has_many :orders
   # カリキュラムに従い下記一行に変更
   has_one :address
@@ -29,5 +33,4 @@ class User < ApplicationRecord
   validates :kana_family_name,presence: true
   validates :kana_first_name,presence: true
   validates :birthday,presence: true
-
 end

@@ -1,0 +1,51 @@
+= render partial: 'layouts/header'
+%nav.menu
+  %ul
+    %li
+      = link_to "FURIMA", root_path
+    %li
+      = icon('fa','angle-right')
+    %li
+      = link_to "マイページ", user_path(current_user.id)
+    %li
+      = icon('fa','angle-right')
+    %li
+      いいね！一覧
+.likes.clearfix
+  .likes-contents
+    .chapter
+      %h2.chapter__header
+        いいね！一覧
+      %ul
+        - @likes.each do |like|
+          %li
+            = link_to item_path(like.product_id), class: 'my-page-item' do
+              %figure
+                = image_tag asset_path(like.product.product_images[0].image_name.url), class: 'img'
+              .my-page-body
+                .text
+                  = like.product.name
+                .text
+                  = like.product.price
+  .likes-side
+    .likes-navi
+      %ul
+        %li.likes-list
+          = link_to "マイページ", user_path(current_user.id)
+        %li.likes-list
+          = link_to "出品する", new_item_path 
+        %li.likes-list
+          = link_to "出品した商品【出品中】", '#'
+        %li.likes-list
+          = link_to "出品した商品【取引中】", '#'
+        %li.likes-list
+          = link_to "出品した商品【売却済み】", '#'
+        %li.likes-list
+          = link_to "購入した商品【取引中】", '#'
+        %li.likes-list
+          = link_to "購入した商品【過去の取引】", '#'
+        %li.likes-list
+          = link_to "ガイド", '#'
+        %li.likes-list
+          = link_to "お問い合わせ", '#'
+= render partial: 'layouts/footer'

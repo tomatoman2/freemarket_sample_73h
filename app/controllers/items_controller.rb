@@ -49,10 +49,11 @@ class ItemsController < ApplicationController
     @parent = Category.find(@children[:parent_id])
     @prefecture = Prefecture.find(@product[:prefecture_id])
     @status = Code.find_by(group_id: GROUP_ITEM_STATUS, code_id: @product[:status])
-    @delivery = Code.find_by(group_id: GROUP_ITEM_POSTAGE, code_id: @product[:delivery_time_code])
-    @postage = Code.find_by(group_id: GROUP_ITEM_DELIVERY_TIME, code_id: @product[:postage_code])
+    @delivery = Code.find_by(group_id: GROUP_ITEM_DELIVERY_TIME, code_id: @product[:delivery_time_code])
+    @postage = Code.find_by(group_id: GROUP_ITEM_POSTAGE, code_id: @product[:postage_code])
     @image = ProductImage.find_by(product_id: params[:id]) 
     @images = ProductImage.where(product_id: @product[:id])
+    @like = Like.new
   end
 
   private

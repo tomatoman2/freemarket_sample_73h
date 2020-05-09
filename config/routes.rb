@@ -13,14 +13,17 @@ Rails.application.routes.draw do
   root to: "home#index"
 
 
-  resources :users
-  resources :items
+  resources :users 
+  resources :items do
+    resources :likes, only: [:create, :destroy]
+  end
   scope :items do
     namespace :api do
       resources :category, only: :index, defaults: { format: 'json' }
     end
   end
   resources :orders
+  resources :likes, only: [:index]
 
 end
 

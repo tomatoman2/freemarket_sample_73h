@@ -23,7 +23,6 @@ class ItemsController < ApplicationController
   def create
     begin
       brand_id = Brand.find_by(name: product_params[:brand_name])
-      brand_id = "" unless brand_id
       @item = Product.new(product_params)
       @error_messages = ""
       if product_params[:product_images_attributes].nil?
@@ -34,10 +33,12 @@ class ItemsController < ApplicationController
           redirect_to root_path
         else
           set_default_value
+          @item.product_images.build
           render :new
         end
       else
         set_default_value
+        @item.product_images.build
         render :new
       end
     rescue => exception
@@ -61,7 +62,6 @@ class ItemsController < ApplicationController
       brand_id = Brand.find_by(name: product_params[:brand_name])
       @item = Product.find(params[:id])
       @error_messages = ""
-      binding.pry
       delete_count = 0
       image_length = 0
       is_image_valid = false
@@ -81,17 +81,14 @@ class ItemsController < ApplicationController
         if @item.update(product_params)
           redirect_to root_path
         else
-          binding.pry
           set_edit_default_value
           render :edit
         end
       else
-        binding.pry
         set_edit_default_value
         render :edit
       end
     rescue => exception
-      binding.pry
       @item = Product.new
       @error_messages = "例外処理が発生しました"
       set_edit_default_value

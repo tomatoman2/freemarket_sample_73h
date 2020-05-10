@@ -62,7 +62,7 @@ class ItemsController < ApplicationController
     if @product.user_id == current_user.id && @product.destroy
       render 'items/destroy'
     else
-      redirect_to root_path, alert: "削除に失敗しました"
+      render 'items/failed'
     end
   end
 

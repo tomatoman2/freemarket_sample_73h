@@ -94,9 +94,9 @@
           .user__option
             %ul
               %li
-                = link_to '▶︎編集する', '#'
+                = link_to '▶︎編集する', edit_item_path(@product)
               %li
-                = link_to '▶︎削除する', '#'
+                = link_to '▶︎削除する', item_path(@product), method: :delete, data: { confirm: '削除しますか？' }
       .content__comment
         = form_for '#' do |f|
           = f.text_area :comment, class: 'textarea'

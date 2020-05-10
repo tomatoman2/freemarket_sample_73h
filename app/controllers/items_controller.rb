@@ -57,6 +57,13 @@ class ItemsController < ApplicationController
     @like = Like.new
   end
 
+  def destroy
+    @product = Product.find(params[:id])
+      if @product.user_id == current_user.id
+        @product.destroy
+      end
+  end
+
   private
   def product_params
     params.require(:product).permit(

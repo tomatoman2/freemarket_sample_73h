@@ -59,7 +59,6 @@ $(function(){
       return false;
     }
   }
-  console.log("aa")
   $("#product_category1").change(function(e){
     e.preventDefault();
     $("#category2").empty();
@@ -95,11 +94,6 @@ function buildFilefield(index){
         id="product_product_images_attributes_${index}_image_name">
     </label>
       `;
-    // const html = `
-    //   <input type="file" 
-    //     name="product[product_images_attributes][${index}][image_name]" 
-    //     id="product_product_images_attributes_${index}_image_name">
-    //   `;
     return html;
   }
   
@@ -114,8 +108,6 @@ function buildFilefield(index){
     $(`#input-${addCount}`).append($(".file-area").first().clone());
 
     imagesLength = $("#input-images-count").data("input-images-count");
-    console.log(imagesLength)
-    console.log(addCount)
     for (let step = 0; step <= imagesLength - 1; step++) {
       //デリートフラグを戻す
       $(`#product_product_images_attributes_${step}__destroy`).prop("checked",false);
@@ -138,14 +130,11 @@ function buildFilefield(index){
 
     imagesCount += 1;
     addCount += 1;
-    console.log("フィールドビルド完了！")
-    console.log(addCount)
     $('.item-images__field__input').append(buildFilefield(addCount));
     $(`#product_product_images_attributes_${addCount}_image_name`).after($(".file-area").first().clone());
 
 
     $("#input-label").attr("for",`product_images_attributes_${addCount}_image`);
-    console.log($("#input-label").attr("for"))
 
     // 末尾の数に1足した数を追加する
     blobUrl = window.URL.createObjectURL(file)

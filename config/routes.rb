@@ -3,8 +3,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations',
     passwords: 'users/passwords'
-  }
-  
+  } 
   devise_scope :user do
     get 'addresses', to: 'users/registrations#new_address'
     post 'addresses', to: 'users/registrations#create_address'
@@ -12,15 +11,15 @@ Rails.application.routes.draw do
   
   root to: "home#index"
 
-
   resources :users
-  resources :items
-  resources :orders, only: [:new, :create]
+  resources :orders, only: [:new, :create] 
+  resources :items do
+    resources :likes, only: [:create, :destroy]
+  end
   scope :items do
     namespace :api do
       resources :category, only: :index, defaults: { format: 'json' }
     end
   end
+  resources :likes, only: [:index]
 end
-
-

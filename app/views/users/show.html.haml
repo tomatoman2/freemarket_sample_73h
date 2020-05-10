@@ -1,3 +1,4 @@
+
 = render partial: 'layouts/header'
 .mypage_top
   %li.mypage_top__navi
@@ -6,7 +7,7 @@
   %li.mypage_top__name
     = link_to '桑折泰斗', '#', class: 'top_user'
 
-.mypage_all
+.mypage_all.clearfix
   .mypage_main
     .mypage_main__content
       = link_to '#', class: 'content_user' do
@@ -81,5 +82,9 @@
         = link_to '本人情報の確認', '#', class: 'setting_link' 
       %li.mypage_side__menu__prf.abc
         = link_to '電話番号の確認', '#', class: 'setting_link' 
+      %li.mypage_side__menu__prf.abc
+        = link_to 'お気に入り一覧', likes_path, class: 'setting_link'
       %li.mypage_side__menu__list.abc
         = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'menu_link'
+= render partial: 'layouts/footer'
+

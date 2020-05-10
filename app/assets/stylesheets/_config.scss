@@ -31,7 +31,9 @@ body{
   display: inline-block;
   border-radius:2px;
 }
-
+.display-none{
+  display:none;
+}
 //入力項目のタイトル部分
 .label{
   font-weight:bold;

@@ -7,4 +7,7 @@ class Category < ApplicationRecord
     Category.where(parent_id: parent_id)
   end
 
+  def parent
+    Category.find(self.parent_id)
+  end
 end

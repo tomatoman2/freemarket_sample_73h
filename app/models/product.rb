@@ -8,14 +8,17 @@ class Product < ApplicationRecord
   validates :prefecture_id, presence: true
   validates :delivery_time_code, presence: true
 
-  has_many :likes
+  has_many :likes, dependent: :destroy
+  has_many :liked_users, through: :likes, source: :user
   has_many :comments
+
   has_many :product_images, dependent: :destroy
   #テスト段階ではとりあえず全てにoptional:trueをつけておく。関連テーブルのデータがなくても登録できるようにする
-  belongs_to :order, optional: true
+  has_one :order
   belongs_to :user, optional: true
   belongs_to :brand, optional: true
   belongs_to :category, optional: true
   belongs_to :code, optional: true
   accepts_nested_attributes_for :product_images, allow_destroy: true
+
 end

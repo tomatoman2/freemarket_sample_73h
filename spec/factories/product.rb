@@ -2,7 +2,7 @@ FactoryBot.define do
 
   factory :product do
     name                {"商品名"}
-    category_id         {1}
+    category_id         {642}
     brand_id            {1}
     brand_name          {"シャネル"}
     size                {"大きい"}

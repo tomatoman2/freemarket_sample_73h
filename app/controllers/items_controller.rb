@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   #他ユーザーの情報は表示しない
   before_action :ensure_correct_user, {only: [:edit,:update]} 
+  before_action :set_item, {only: [:edit,:update]}
   GROUP_ITEM_STATUS = 100
   GROUP_ITEM_POSTAGE = 101
   GROUP_ITEM_DELIVERY_TIME = 102
@@ -50,8 +51,6 @@ class ItemsController < ApplicationController
   end
   def edit
     begin
-      @item = Product.find(params[:id])
-      @error_messages = ""
       set_edit_default_value
     rescue => exception
       redirect_to root_path
@@ -59,9 +58,6 @@ class ItemsController < ApplicationController
   end
   def update
     begin
-      brand_id = Brand.find_by(name: product_params[:brand_name])
-      @item = Product.find(params[:id])
-      @error_messages = ""
       delete_count = 0
       image_length = 0
       is_image_valid = false
@@ -89,7 +85,6 @@ class ItemsController < ApplicationController
         render :edit
       end
     rescue => exception
-      @item = Product.new
       @error_messages = "例外処理が発生しました"
       set_edit_default_value
       render :edit
@@ -132,6 +127,11 @@ class ItemsController < ApplicationController
       :price,
       product_images_attributes: [:id,:image_name,:_destroy]
       ).merge(user_id:current_user.id)
+  end
+
+  def set_item
+    @item = Product.find(params[:id])
+    @error_messages = ""
   end
   
   def set_default_value

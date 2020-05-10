@@ -3,6 +3,8 @@ class ItemsController < ApplicationController
   GROUP_ITEM_POSTAGE = 101
   GROUP_ITEM_DELIVERY_TIME = 102
 
+  before_action :set_product, only: [:show, :destroy]
+
   def index   
     @items = Product.all.includes(:user)
   end
@@ -44,7 +46,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
+    # @product = Product.find(params[:id])
     @grandchild = Category.find(@product[:category_id])
     @children = Category.find(@grandchild[:parent_id])
     @parent = Category.find(@children[:parent_id])
@@ -58,10 +60,11 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @product = Product.find(params[:id])
-      if @product.user_id == current_user.id
-        @product.destroy
-      end
+    if @product.user_id == current_user.id && @product.destroy
+      render 'items/destroy'
+    else
+      redirect_to root_path, alert: "削除に失敗しました"
+    end
   end
 
   private
@@ -89,6 +92,10 @@ class ItemsController < ApplicationController
     @postages = Code.group_search(GROUP_ITEM_POSTAGE)
     @delivery_times = Code.group_search(GROUP_ITEM_DELIVERY_TIME)
     @prefectures = Prefecture.all
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
   end
 end
 

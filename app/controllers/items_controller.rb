@@ -154,7 +154,7 @@ class ItemsController < ApplicationController
       end
     end      
     #カテゴリ情報の取得
-    @current_category = Category.find_by(id: @item.category_id)
+    @current_category = Category.find(@item.category_id)
     @current_child_category = @current_category.parent
     @current_parent_category = @current_child_category.parent
     set_default_value

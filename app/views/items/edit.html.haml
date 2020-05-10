@@ -1,0 +1,173 @@
+.edit-items
+  .input-form
+    -if !@error_messages.empty?
+      .from-error
+        = @error_messages
+    -@item.errors.full_messages.each do |message|
+      .form-error
+        = message
+    = form_with model: [@item] ,url: item_path,local: true do |f|
+      .item-images
+        .item-images__label.label
+          出品画像
+          %span.required
+            必須
+          %p
+            最大10枚までアップロードできます
+        .item-images__field
+          - image_count = 0
+          .item-images__field__previews--first#item-images__field__previews--first{class: "images-count--#{@first_images.length}"}
+            - @first_images.each do |image|
+              - image_count += 1            
+              .preview{class:"preview-width--#{@first_images.length % 5}",id:"preview-#{image_count}",data:{id:image.id}}
+                = image_tag asset_path(image.image_name.url) ,data:{index:image_count}
+                = link_to "削除","#",{class:"delete-preview",id:"delete-preview-#{image_count}",data:{index:image_count}}
+          .item-images__field__previews--second#item-images__field__previews--second{class: "images-count--#{@second_images.length}"}
+            - @second_images.each do |image|
+              - image_count += 1
+              .preview{class:"preview-width--#{@second_images.length % 5}",id:"preview-#{image_count}",data:{id:image.id}}
+                = image_tag asset_path(image.image_name.url) ,data:{index:image_count}
+                = link_to "削除","#",{class:"delete-preview",id:"delete-preview-#{image_count}",data:{index:image_count}}
+          .item-images__field__input.input{class:"field-width--#{image_count % 5}"}
+            %label#input-label
+              = f.fields_for :product_images do |image|
+                = image.file_field :image_name
+                = image.hidden_field :image_name
+                = image.hidden_field :id,value: image.object.id
+                = image.check_box:_destroy
+              .file-area
+                .file-area__message
+                  %p
+                    =image_tag asset_path("camera.png"),width:"20px"
+                    %br
+                    クリックしてファイルをアップロード
+      %hr
+      .item-info
+        .item-info__item-name
+          .label
+            =f.label :name
+            %span.required
+              必須
+          .input
+            =f.text_field :name
+        .item-info__item-explanation
+          .label
+            =f.label :explanation
+            %span.required
+              必須
+          .input
+            =f.text_area :explanation,rows: 7,placeholder: @item_explanation_placeholder
+      %hr
+      .item-details
+        %p
+          商品の詳細
+        .item-details__item-category
+          .label
+            =f.label :category_id
+            %span.required
+              必須
+          .input-select#category1
+            -if @current_parent_category
+              = f.select :category1 ,options_for_select(Category.where(level: 0).map{|category| [category.name, category.id]},@current_parent_category.id),prompt: true
+            -else
+              = f.select :category1 ,options_for_select(Category.where(level: 0).map{|category| [category.name, category.id]}),prompt: true
+            %svg{"aria-hidden": "true", fill: "#888888", "fill-rule": "evenodd", height: "24", viewbox: "0 0 24 24", width: "24"}
+              %path{d: "M12,15.66a1.73,1.73,0,0,1-1.2-.49L5.21,9.54a.7.7,0,0,1,1-1l5.62,5.62c.15.15.27.15.41,0L17.8,8.6a.71.71,0,0,1,1,0,.69.69,0,0,1,0,1l-5.57,5.58A1.71,1.71,0,0,1,12,15.66Z"}
+          .input-select#category2
+            - if @current_parent_category
+              = f.select :category2 ,options_for_select(Category.where(parent_id: @current_parent_category).map{|category| [category.name, category.id]},@current_child_category.id),prompt: true
+              %svg{"aria-hidden": "true", fill: "#888888", "fill-rule": "evenodd", height: "24", viewbox: "0 0 24 24", width: "24"}
+                %path{d: "M12,15.66a1.73,1.73,0,0,1-1.2-.49L5.21,9.54a.7.7,0,0,1,1-1l5.62,5.62c.15.15.27.15.41,0L17.8,8.6a.71.71,0,0,1,1,0,.69.69,0,0,1,0,1l-5.57,5.58A1.71,1.71,0,0,1,12,15.66Z"}
+          .input-select#category3
+            - if @current_child_category
+              = f.select :category_id ,Category.where(parent_id: @current_child_category).map{|category| [category.name, category.id]},prompt: true
+              %svg{"aria-hidden": "true", fill: "#888888", "fill-rule": "evenodd", height: "24", viewbox: "0 0 24 24", width: "24"}
+                %path{d: "M12,15.66a1.73,1.73,0,0,1-1.2-.49L5.21,9.54a.7.7,0,0,1,1-1l5.62,5.62c.15.15.27.15.41,0L17.8,8.6a.71.71,0,0,1,1,0,.69.69,0,0,1,0,1l-5.57,5.58A1.71,1.71,0,0,1,12,15.66Z"}
+        .item-details__item-brand
+          .label
+            =f.label :brand_name
+            %span.any
+              任意
+          .input
+            =f.text_field :brand_name,placeholder: "例）シャネル"
+        .item-details__item-size
+          .label
+            =f.label :size
+            %span.required
+              必須
+          .input
+            =f.text_field :size
+        .item-details__item-status
+          .label
+            =f.label :status
+            %span.required
+              必須
+          .input-select
+            = f.select :status,@statuses.map{|status| [status.code_name, status.code_id]},prompt: true 
+            %svg{"aria-hidden": "true", fill: "#888888", "fill-rule": "evenodd", height: "24", viewbox: "0 0 24 24", width: "24"}
+              %path{d: "M12,15.66a1.73,1.73,0,0,1-1.2-.49L5.21,9.54a.7.7,0,0,1,1-1l5.62,5.62c.15.15.27.15.41,0L17.8,8.6a.71.71,0,0,1,1,0,.69.69,0,0,1,0,1l-5.57,5.58A1.71,1.71,0,0,1,12,15.66Z"}
+      %hr
+      .delivery-info
+        %p
+          配送について
+        .delivery-info__postage
+          .label
+            =f.label :postage_code
+            %span.required
+              必須
+          .input-select
+            = f.select :postage_code,@postages.map{|postage| [postage.code_name, postage.code_id]},prompt: true 
+            %svg{"aria-hidden": "true", fill: "#888888", "fill-rule": "evenodd", height: "24", viewbox: "0 0 24 24", width: "24"}
+              %path{d: "M12,15.66a1.73,1.73,0,0,1-1.2-.49L5.21,9.54a.7.7,0,0,1,1-1l5.62,5.62c.15.15.27.15.41,0L17.8,8.6a.71.71,0,0,1,1,0,.69.69,0,0,1,0,1l-5.57,5.58A1.71,1.71,0,0,1,12,15.66Z"}
+        .delivery-info__prefecture
+          .label
+            =f.label :prefecture_id
+            %span.required
+              必須
+          .input-select
+            = f.select :prefecture_id,@prefectures.map{|prefecture| [prefecture.name, prefecture.id]},prompt: true 
+            %svg{"aria-hidden": "true", fill: "#888888", "fill-rule": "evenodd", height: "24", viewbox: "0 0 24 24", width: "24"}
+              %path{d: "M12,15.66a1.73,1.73,0,0,1-1.2-.49L5.21,9.54a.7.7,0,0,1,1-1l5.62,5.62c.15.15.27.15.41,0L17.8,8.6a.71.71,0,0,1,1,0,.69.69,0,0,1,0,1l-5.57,5.58A1.71,1.71,0,0,1,12,15.66Z"}
+        .delivery-info__delivery_time
+          .label
+            =f.label :delivery_time_code
+            %span.required
+              必須
+          .input-select
+            = f.select :delivery_time_code,@delivery_times.map{|delivery_time| [delivery_time.code_name, delivery_time.code_id]},prompt: true 
+            %svg{"aria-hidden": "true", fill: "#888888", "fill-rule": "evenodd", height: "24", viewbox: "0 0 24 24", width: "24"}
+              %path{d: "M12,15.66a1.73,1.73,0,0,1-1.2-.49L5.21,9.54a.7.7,0,0,1,1-1l5.62,5.62c.15.15.27.15.41,0L17.8,8.6a.71.71,0,0,1,1,0,.69.69,0,0,1,0,1l-5.57,5.58A1.71,1.71,0,0,1,12,15.66Z"}
+      %hr
+      .item-price
+        %p
+          価格
+        .item-price__price
+          .label
+            =f.label :price
+            %span.required
+              必須
+          .input
+            ¥
+            =f.text_field :price ,type: "number",placeholder: "0"
+      %hr
+      .item-fee
+        %p
+          販売手数料（10%）
+        .item-fee__price
+          %p
+            \-
+      %hr
+      .item-profit
+        %p
+          販売利益
+        .item-profit__price
+          %p
+            \-
+      %hr
+      .actions
+        =f.submit "出品する", class: 'actions__submit-button'
+        = link_to "もどる","#",class: "back"
+      %p.note
+        禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+#input-images-count.display-none{ data: {input_images_count:@item.product_images.length}}
+  = @item.product_images.length

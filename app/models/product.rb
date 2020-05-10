@@ -12,7 +12,7 @@ class Product < ApplicationRecord
   has_many :comments
   has_many :product_images
   #テスト段階ではとりあえず全てにoptional:trueをつけておく。関連テーブルのデータがなくても登録できるようにする
-  belongs_to :order, optional: true
+  has_one :order
   belongs_to :user, optional: true
   belongs_to :brand, optional: true
   belongs_to :category, optional: true

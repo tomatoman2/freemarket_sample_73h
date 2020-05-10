@@ -59,7 +59,7 @@ $(function(){
       return false;
     }
   }
-
+  console.log("aa")
   $("#product_category1").change(function(e){
     e.preventDefault();
     $("#category2").empty();
@@ -95,12 +95,41 @@ function buildFilefield(index){
         id="product_product_images_attributes_${index}_image_name">
     </label>
       `;
+    // const html = `
+    //   <input type="file" 
+    //     name="product[product_images_attributes][${index}][image_name]" 
+    //     id="product_product_images_attributes_${index}_image_name">
+    //   `;
     return html;
   }
   
 
   let imagesCount = 0;
   let addCount = 0;
+  if ($(".preview:last img").length > 0){
+    //商品編集ページの初期化処理
+    imagesCount = $(".preview:last img").data("index");
+    addCount = $(".preview:last img").data("index");
+    $('.item-images__field__input').append(buildFilefield(addCount));
+    $(`#input-${addCount}`).append($(".file-area").first().clone());
+
+    imagesLength = $("#input-images-count").data("input-images-count");
+    console.log(imagesLength)
+    console.log(addCount)
+    for (let step = 0; step <= imagesLength - 1; step++) {
+      //デリートフラグを戻す
+      $(`#product_product_images_attributes_${step}__destroy`).prop("checked",false);
+      //追加した画像を削除する
+      if (step >= addCount) {
+        $(`input[name="product[product_images_attributes][${step}][_destroy]"]`).remove();
+        $(`input[name="product[product_images_attributes][${step}][id]"]`).remove();
+        $(`input[name="product[product_images_attributes][${step}][image_name]"]`).remove();
+      }
+    }
+    
+  }
+  
+  
   //DataTransferオブジェクトで、データを格納する箱を作る
   //querySelectorでfile_fieldを取得
   $(document).on('change',"input[type=file]", function(e){
@@ -109,9 +138,14 @@ function buildFilefield(index){
 
     imagesCount += 1;
     addCount += 1;
+    console.log("フィールドビルド完了！")
+    console.log(addCount)
     $('.item-images__field__input').append(buildFilefield(addCount));
     $(`#product_product_images_attributes_${addCount}_image_name`).after($(".file-area").first().clone());
 
+
+    $("#input-label").attr("for",`product_images_attributes_${addCount}_image`);
+    console.log($("#input-label").attr("for"))
 
     // 末尾の数に1足した数を追加する
     blobUrl = window.URL.createObjectURL(file)
@@ -190,12 +224,19 @@ function buildFilefield(index){
     }
   }
 
+  //プレビュー削除処理
+  var destroyArray = [];
   $(document).on('click',".delete-preview",function(e){
     e.preventDefault()
     
     index = $(this).data("index");
     current = $(this)
     parent = current.parent().parent()
+    //削除チェックをつける
+    $(`#product_product_images_attributes_${index-1}__destroy`).prop("checked",true);
+    //削除したimageのidを配列に格納
+    destroyArray.push(current.parent().data("id"));
+    $("#product_product_images_attributes_0_destroy_images").val(destroyArray);
     imagesCount -= 1;
     $(`#input-${index -1}`).remove();
     $(`#preview-${index}`).remove();
@@ -204,6 +245,8 @@ function buildFilefield(index){
       $("#item-images__field__previews--second .preview:first").appendTo($(".item-images__field__previews--first"));
     }
     setPreviewClass(imagesCount);
+
+    
   });
   //---------------------------------------------
   //--手数料計算---------------------------------

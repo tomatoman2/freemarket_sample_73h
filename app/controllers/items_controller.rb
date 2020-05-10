@@ -4,8 +4,11 @@ class ItemsController < ApplicationController
   GROUP_ITEM_STATUS = 100
   GROUP_ITEM_POSTAGE = 101
   GROUP_ITEM_DELIVERY_TIME = 102
-  
-  def index
+
+  before_action :set_product, only: [:show, :destroy]
+
+  def index   
+    @items = Product.all.includes(:user)
   end
   def new
     begin
@@ -96,6 +99,27 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+    @grandchild = Category.find(@product[:category_id])
+    @children = Category.find(@grandchild[:parent_id])
+    @parent = Category.find(@children[:parent_id])
+    @prefecture = Prefecture.find(@product[:prefecture_id])
+    @status = Code.find_by(group_id: GROUP_ITEM_STATUS, code_id: @product[:status])
+    @delivery = Code.find_by(group_id: GROUP_ITEM_DELIVERY_TIME, code_id: @product[:delivery_time_code])
+    @postage = Code.find_by(group_id: GROUP_ITEM_POSTAGE, code_id: @product[:postage_code])
+    @image = ProductImage.find_by(product_id: params[:id]) 
+    @images = ProductImage.where(product_id: @product[:id])
+    @like = Like.new
+  end
+
+  def destroy
+    if @product.user_id == current_user.id && @product.destroy
+      render 'items/destroy'
+    else
+      render 'items/failed'
+    end
+  end
+
   private
   def product_params
     params.require(:product).permit(
@@ -146,4 +170,8 @@ class ItemsController < ApplicationController
     end
   end
 
+  def set_product
+    @product = Product.find(params[:id])
+  end
 end
+

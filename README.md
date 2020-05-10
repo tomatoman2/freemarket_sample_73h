@@ -3,10 +3,13 @@
 |Column |Type |Option|
 |------------|------|----------|
 |nickname |string |null: false|
+|email |string |null: false|
 |password |string |null: false|
-|name |string |null: false
-|kana_name |string |null:false|
-|birthday |datetime |null: false|
+|family_name |string |null: false|
+|first_name |string |null: false|
+|kana_family_name |string |null:false|
+|kana_first_name |string |null:false|
+|birthday |date |null: false|
 
 ### Association
 - has_many :credit_cards
@@ -16,7 +19,7 @@
 - has_many:Products
 - has_many:order
 
-## products
+## productsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
@@ -42,7 +45,7 @@
 - belongs_to :category
 - belongs_to :code
 
-## product_images
+## product_imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |image_name|string|null: false|
@@ -119,6 +122,25 @@
 - belongs_to :product
 
 
+## commentss テーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|null: false, foreign_key: true|
+|product_id|references|null: false, foreign_key: true|
+|message|string||
+
+### Association
+- belongs_to :user
+- belongs_to :product
 
 
+## likes テーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|null: false, foreign_key: true|
+|product_id|references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :product
 

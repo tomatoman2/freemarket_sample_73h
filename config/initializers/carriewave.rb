@@ -17,7 +17,7 @@ CarrierWave.configure do |config|
       region: 'ap-northeast-1'
     }
 
-    config.fog_directory  = 'norio-chat-space'
-    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/norio-chat-space'
+    config.fog_directory  = 'deployappimage'
+    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/deployappimage'
   end
 end

@@ -46,7 +46,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    # @product = Product.find(params[:id])
     @grandchild = Category.find(@product[:category_id])
     @children = Category.find(@grandchild[:parent_id])
     @parent = Category.find(@children[:parent_id])

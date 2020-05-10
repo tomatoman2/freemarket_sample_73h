@@ -30,7 +30,7 @@
                   %li= image_tag image.image_name.url, class: 'gallery'
         .content__form__price
           .price
-            = @product.price
+            = "¥#{@product.price}"
           .tax
             (税込) 送料込み
         .content__form__text
@@ -76,16 +76,19 @@
         .content__form__option
           .option
             .like
-              - if current_user.already_liked?(@product)
-                = link_to item_like_path(@product), method: :delete do
-                  = icon('fas','star', class: 'like__icon')
-                  お気に入り
-                = @product.liked_users.count
+              - if user_signed_in?
+                - if current_user.already_liked?(@product)
+                  = link_to item_like_path(@product), method: :delete do
+                    = icon('fas','star', class: 'like__icon')
+                    お気に入り：
+                  = @product.liked_users.count
+                - else
+                  = link_to item_likes_path(@product), method: :post do
+                    = icon('far', 'star', class: 'like__icon')
+                    お気に入り：
+                  = @product.liked_users.count
               - else
-                = link_to item_likes_path(@product), method: :post do
-                  = icon('far', 'star', class: 'like__icon')
-                  お気に入り
-                = @product.liked_users.count
+                お気に入りには登録が必要です
           .option
             .report
               = icon('fa', 'flag', class: 'report__icon')

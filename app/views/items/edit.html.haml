@@ -6,7 +6,7 @@
     -@item.errors.full_messages.each do |message|
       .form-error
         = message
-    = form_with model: [@item] ,url: item_path,local: true,multipart: true do |f|
+    = form_with model: [@item] ,url: item_path,local: true do |f|
       .item-images
         .item-images__label.label
           出品画像
@@ -32,7 +32,6 @@
             %label#input-label
               = f.fields_for :product_images do |image|
                 = image.file_field :image_name
-                = image.hidden_field :image_name
                 = image.hidden_field :id,value: image.object.id
                 = image.check_box:_destroy
               .file-area

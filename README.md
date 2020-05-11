@@ -71,13 +71,10 @@
 ## credit_cardsテーブル
 |Column|Type|Option|
 |------|----|------|
-|card_number|integer|null:false, unique: true
-|expiration_year|integer|null: false|
-|expiration_month|integer|null: false|
-|security_code|integer|null: false|
-|card_name|string|null: false|
-|user_id|references|null: false, foreign_key: true|
-### Association 　　　　
+|user_id|integer|null: false|
+|costomer_id|string|null: false|
+|card_id|string|null: false|
+### Association 
 - belongs_to:user
 
 ## categoryテーブル

@@ -6,7 +6,7 @@
     -@item.errors.full_messages.each do |message|
       .form-error
         = message
-    = form_with model: [@item] ,url: item_path,local: true,multipart: :true do |f|
+    = form_with model: [@item] ,url: item_path,local: true,multipart: true do |f|
       .item-images
         .item-images__label.label
           出品画像

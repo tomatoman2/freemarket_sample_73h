@@ -58,7 +58,7 @@ class ItemsController < ApplicationController
     end
   end
   def update
-    # begin
+    begin
       delete_count = 0
       image_length = 0
       is_image_valid = false
@@ -85,11 +85,11 @@ class ItemsController < ApplicationController
         set_edit_default_value
         render :edit
       end
-    # rescue => exception
-    #   @error_messages = "例外処理が発生しました"
-    #   set_edit_default_value
-    #   render :edit
-    # end
+    rescue => exception
+      @error_messages = "例外処理が発生しました"
+      set_edit_default_value
+      render :edit
+    end
   end
 
   def show

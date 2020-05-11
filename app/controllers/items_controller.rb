@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   #他ユーザーの情報は表示しない
+  before_action :authenticate_user,{only: [:new,:create,:edit,:update]}
   before_action :ensure_correct_user, {only: [:edit,:update]} 
   before_action :set_item, {only: [:edit,:update]}
   GROUP_ITEM_STATUS = 100
@@ -161,9 +162,15 @@ class ItemsController < ApplicationController
   end
 
   def ensure_correct_user
-    current_item = Product.find(params[:id])
-    if current_item.user_id != current_user.id
+    current_item = Product.find_by(id:params[:id])
+    if current_item.nil? || current_item.user_id != current_user.id
       redirect_to root_path
+    end
+  end
+
+  def authenticate_user
+    if !user_signed_in?
+      redirect_to new_user_session_path
     end
   end
 

@@ -1,5 +1,7 @@
 = render partial: 'layouts/header'
 .main
+  =ENV.each do | a|
+    = a
   %section.main__visual
     .main__visual__content
       %h2.main__visual__content__title

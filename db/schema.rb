@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_23_120014) do
+ActiveRecord::Schema.define(version: 2020_05_09_133158) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postal_code", null: false
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_04_23_120014) do
     t.string "street", null: false
     t.string "building_name"
     t.string "telehone_number"
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
@@ -59,15 +59,11 @@ ActiveRecord::Schema.define(version: 2020_04_23_120014) do
   end
 
   create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "card_number", null: false
-    t.integer "expiration_year", null: false
-    t.integer "expiration_month", null: false
-    t.integer "security_code", null: false
-    t.string "card_name", null: false
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
+    t.string "customer_id", null: false
+    t.string "card_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_credit_cards_on_user_id"
   end
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -104,7 +100,7 @@ ActiveRecord::Schema.define(version: 2020_04_23_120014) do
     t.decimal "price", precision: 10, null: false
     t.integer "postage_code", null: false
     t.text "explanation", null: false
-    t.string "status", null: false
+    t.integer "status", null: false
     t.integer "user_id"
     t.integer "prefecture_id", null: false
     t.integer "delivery_time_code", null: false
@@ -130,10 +126,8 @@ ActiveRecord::Schema.define(version: 2020_04_23_120014) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "addresses", "users"
   add_foreign_key "comments", "products"
   add_foreign_key "comments", "users"
-  add_foreign_key "credit_cards", "users"
   add_foreign_key "likes", "products"
   add_foreign_key "likes", "users"
   add_foreign_key "orders", "products"

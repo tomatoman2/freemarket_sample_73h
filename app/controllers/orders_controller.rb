@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
     begin
       @order = Order.new(order_params)
       if @order.save
-        card = CreditCard.where(user_id: current_user.id).first
+        card = CreditCard.find_by(user_id: current_user.id)
         Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
         Payjp::Charge.create(
           amount: @order.product.price,

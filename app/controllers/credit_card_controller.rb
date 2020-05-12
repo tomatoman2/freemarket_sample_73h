@@ -40,7 +40,7 @@ class CreditCardController < ApplicationController
 
   def delete #PayjpとCardデータベースを削除します
     begin
-      card = CreditCard.where(user_id: current_user.id).first
+      card = CreditCard.find_by(user_id: current_user.id)
       if card.blank?
       else
         Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
@@ -66,7 +66,7 @@ class CreditCardController < ApplicationController
   end
 
   def set_show_default_value #Cardのデータpayjpに送り情報を取り出します
-    card = CreditCard.where(user_id: current_user.id).first
+    card = CreditCard.find_by(user_id: current_user.id)
     if card.blank?
       redirect_to action: "new" 
     else

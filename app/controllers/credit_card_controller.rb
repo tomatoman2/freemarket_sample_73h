@@ -14,7 +14,7 @@ class CreditCardController < ApplicationController
   end
 
   def pay #payjpとCardのデータベース作成を実施します
-    begin
+#     begin
       # Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       Payjp.api_key = Rails.application.credentials.payjp[:payjp_private_key]
       if params['payjp-token'].blank?
@@ -33,10 +33,10 @@ class CreditCardController < ApplicationController
           end
         end
       end
-    rescue => exception
-      @error_messages = "登録できませんでした"
-      render :new 
-    end
+    # rescue => exception
+    #   @error_messages = "登録できませんでした"
+    #   render :new 
+    # end
   end
 
   def delete #PayjpとCardデータベースを削除します

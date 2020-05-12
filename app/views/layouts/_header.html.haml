@@ -14,10 +14,10 @@
         %li
         = link_to 'カテゴリー', '#', class: 'choice'
         %li
-        = link_to 'ブランド', '#', class: 'choice'
+        = link_to '出品中の商品一覧', items_path, class: 'choice'
       .navi__right
         - if user_signed_in?
-          =link_to 'マイページ', "/users/#{current_user.id}"
+          = link_to 'マイページ', "/users/#{current_user.id}"
         - else
           = link_to 'ログイン', new_user_session_path
           = link_to '新規登録', new_user_registration_path

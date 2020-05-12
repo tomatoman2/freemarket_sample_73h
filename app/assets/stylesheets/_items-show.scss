@@ -139,11 +139,14 @@
               margin-right: auto;
               padding: 6px 10px;
               border-radius: 40px;
-              color: #3CCACE;
+              color: #ffb340;
               border: 1px solid #ffb340;
               &__icon {
                 margin: auto;
-                color: #3CCACE;
+                color: #ffb340;
+              }
+              a {
+                color: #ffb340;
               }
             }
             .like:hover {

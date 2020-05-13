@@ -4,11 +4,11 @@
     商品一覧
   .item_all_product__info
     - @items.each do |item|
-      = link_to '#' ,class: 'box_infomation' do
+      = link_to item_path(item.id), class: 'box_infomation' do
         .item_all_product__info__box
           - if item.order == nil
             .item_all_product__info__box__sold
-              SOLD
+              SALE
           - else 
             .item_all_product__info__box__soldout
               SOLD OUT

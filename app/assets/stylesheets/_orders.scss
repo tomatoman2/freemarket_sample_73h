@@ -113,16 +113,27 @@
       padding:24px 30% 24px;
       margin-bottom: -40px;
       .bottom__buy {
-        background-color: red;
+        // background-color: red;
         text-align: center;
         padding: 10px;
-        .purchase {
+        .purchase2 {
           background-color: red;
           color: #fff;
           border: none;
           outline: none;
           font-size: 20px;
           font-weight: bold;
+          input[type='submit']{
+            background-color: red;
+            border: none;
+            margin: auto;
+            color:white;
+            display: inline-block;
+            font-size: 30px;
+            padding: 5px;
+            outline:none;
+            cursor: pointer;
+          }
         }
       }
     }

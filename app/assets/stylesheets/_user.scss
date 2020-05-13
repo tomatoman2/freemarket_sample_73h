@@ -53,17 +53,16 @@
     .field__actions{
       text-align: center;
     }
-  
+    input[type='submit'] {
+      background-color: #3CCACE;
+      color:white;
+      display: inline-block;
+      height: 50px;
+      font-size: 30px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
   }
-  input[type='submit'] {
-    background-color: #3CCACE;
-    color:white;
-    display: inline-block;
-    height: 50px;
-    font-size: 30px;
-    margin-top: 20px;
-    cursor: pointer;
 
-  }
 
 

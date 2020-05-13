@@ -1,0 +1,24 @@
+.purchase {
+  margin: 150px auto;
+  width: 400px;
+  text-align: center;
+  border: solid;
+  border-color: #3CCACE;
+  border-radius: 8px;
+  font-family: "Comic Sans MS";
+  font-weight: bold;
+  padding: 30px;
+  background-color: white;
+  &__form {
+    margin: auto;
+    font-size: 30px;
+    color: #ff8ac1d1;
+  }
+  .top {
+    text-decoration: none;
+    color: #ffb340;
+  }
+  .top:hover {
+    opacity: 0.7;
+  }
+}

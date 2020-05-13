@@ -5,7 +5,7 @@
     = link_to 'フリマ', '#', class: 'hurima'
     = icon("fa", "angle-right")
   %li.mypage_top__name
-    = link_to '桑折泰斗', '#', class: 'top_user'
+    = link_to 'マイページ', user_path(id: current_user.id), class: 'top_user'
 
 .mypage_all.clearfix
   .mypage_main
@@ -14,7 +14,7 @@
         .mypage_main__content__case.abc
           = image_tag "member_photo_noimage_thumb.png", size: "60x60", class: 'image_user'
           .content_name
-            桑折泰斗
+            = @name.nickname
           .content_under
             .under_test
               評価 ０
@@ -75,7 +75,7 @@
       %li.mypage_side__menu__list.abc
         = link_to '設定', '#', class: 'menu_link' 
       %li.mypage_side__menu__prf.abc
-        = link_to 'クレジットカードの登録', '#', class: 'setting_link' 
+        = link_to 'クレジットカードの登録',new_credit_card_path, class: 'setting_link' 
       %li.mypage_side__menu__prf.abc
         = link_to '住所の登録', '#', class: 'setting_link' 
       %li.mypage_side__menu__prf.abc

@@ -59,14 +59,10 @@ body{
             margin: auto;
           }
           .content_name{
-            margin: auto;
-            font-size: 14px;
-            position: absolute;
-            top: 110px;
-            left: 320px;
-            line-height: 1.4;
-            color: black;
-
+            color: white;
+            text-align: center;
+            padding-top: 120px;
+            font-weight: bold;
           }
           .content_under{
             display: flex;
@@ -75,12 +71,12 @@ body{
             left: 300px;
             .under_test{          
               font-size: 14px;  
-              color: black;         
+              color: white;         
             }
             .under_put{
               margin: 0 0 0 16px;
               font-size: 14px;
-              color: black;
+              color: white;
             }
           }
         }

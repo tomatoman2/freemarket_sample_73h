@@ -93,6 +93,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @name = User.find(@product[:user_id])
     @grandchild = Category.find(@product[:category_id])
     @children = Category.find(@grandchild[:parent_id])
     @parent = Category.find(@children[:parent_id])

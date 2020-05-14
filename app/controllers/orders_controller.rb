@@ -3,9 +3,9 @@ class OrdersController < ApplicationController
   GROUP_ITEM_POSTAGE = 101
   GROUP_ITEM_DELIVERY_TIME = 102
 
+  before_action :ensure_correct_user_oder, {only: [:new]}
   before_action :set_item, only: [:new, :create]
-
-
+  
   def new
     begin
       default_card_information
@@ -71,7 +71,13 @@ class OrdersController < ApplicationController
       @default_card_information = customer.cards.retrieve(card.card_id)
     end
   end
+
+  def ensure_correct_user_oder
+    sell_item = Product.find_by(id:params[:id])
+    if !user_signed_in?
+      redirect_to new_user_session_path
+    elsif sell_item.user_id == current_user.id
+      redirect_to root_path
+    end
+  end
 end
-
-
-
